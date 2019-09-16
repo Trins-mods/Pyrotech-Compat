@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class BlockInitializer {
 
-    public static BlockInitializer instance;
+    public static BlockInitializer instance = new BlockInitializer();
     static final Map<Item, Block> toRegister = new LinkedHashMap<>();
     public static BlockAnvilScoria blockAnvilScoria;
 
