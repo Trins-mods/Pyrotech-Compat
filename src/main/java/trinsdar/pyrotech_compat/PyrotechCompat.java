@@ -18,6 +18,7 @@ public class PyrotechCompat {
 
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event){
+        //JsonMaker.init(event);
         BlockInitializer.onRegister();
         if (event.getSide().isClient()){
             BlockInitializer.onClientRegister(new Registry(MODID, ModPyrotech.CREATIVE_TAB));

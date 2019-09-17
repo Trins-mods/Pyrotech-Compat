@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "pyrotech_compat:items/rock_red_granite_sand"
+  }
+}
