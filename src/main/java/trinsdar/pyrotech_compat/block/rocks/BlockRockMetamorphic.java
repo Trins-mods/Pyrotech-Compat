@@ -12,6 +12,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import trinsdar.pyrotech_compat.BlockInitializer;
 
 import javax.annotation.Nonnull;
 import java.util.Comparator;
@@ -25,40 +26,46 @@ public class BlockRockMetamorphic extends BlockRockBase implements IBlockVariant
         super(NAME, SoundType.STONE);
     }
 
+    @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> list) {
-        BlockRock.EnumType[] var3 = BlockRock.EnumType.values();
+        EnumType[] var3 = EnumType.values();
         int var4 = var3.length;
 
         for(int var5 = 0; var5 < var4; ++var5) {
-            BlockRock.EnumType type = var3[var5];
+            EnumType type = var3[var5];
             list.add(new ItemStack(this, 1, type.getMeta()));
         }
-
     }
 
+    @Override
     @Nonnull
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, VARIANT);
     }
 
+    @Override
     @Nonnull
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(VARIANT, EnumType.fromMeta(meta));
     }
 
+    @Override
     public int getMetaFromState(IBlockState state) {
         return (state.getValue(VARIANT)).getMeta();
     }
 
+    @Override
     public int damageDropped(IBlockState state) {
         return this.getMetaFromState(state);
     }
 
+    @Override
     @Nonnull
     public String getModelName(ItemStack itemStack) {
         return BlockRock.EnumType.fromMeta(itemStack.getMetadata()).getName();
     }
 
+    @Override
     @Nonnull
     public IProperty<EnumType> getVariant() {
         return VARIANT;
@@ -85,10 +92,12 @@ public class BlockRockMetamorphic extends BlockRockBase implements IBlockVariant
             this.name = name;
         }
 
+        @Override
         public int getMeta() {
             return this.meta;
         }
 
+        @Override
         @Nonnull
         public String getName() {
             return this.name;
@@ -99,7 +108,7 @@ public class BlockRockMetamorphic extends BlockRockBase implements IBlockVariant
         }
 
         public ItemStack asStack(int amount) {
-            return new ItemStack(ModuleCore.Blocks.ROCK, amount, this.meta);
+            return new ItemStack(BlockInitializer.blockRockMetamorphic, amount, this.meta);
         }
 
         public static EnumType fromMeta(int meta) {

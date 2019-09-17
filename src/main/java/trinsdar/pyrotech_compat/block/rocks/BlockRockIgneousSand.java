@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import trinsdar.pyrotech_compat.BlockInitializer;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -29,6 +30,7 @@ public class BlockRockIgneousSand extends BlockRockBase implements IBlockVariant
         super(NAME, SoundType.STONE);
     }
 
+    @Override
     @Nonnull
     public SoundType getSoundType(IBlockState state, World world, BlockPos pos, @Nullable Entity entity) {
         EnumType type = state.getValue(VARIANT);
@@ -39,40 +41,46 @@ public class BlockRockIgneousSand extends BlockRockBase implements IBlockVariant
         }
     }
 
+    @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> list) {
-        BlockRock.EnumType[] var3 = BlockRock.EnumType.values();
+        EnumType[] var3 = EnumType.values();
         int var4 = var3.length;
 
         for(int var5 = 0; var5 < var4; ++var5) {
-            BlockRock.EnumType type = var3[var5];
+            EnumType type = var3[var5];
             list.add(new ItemStack(this, 1, type.getMeta()));
         }
-
     }
 
+    @Override
     @Nonnull
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, VARIANT);
     }
 
+    @Override
     @Nonnull
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(VARIANT, EnumType.fromMeta(meta));
     }
 
+    @Override
     public int getMetaFromState(IBlockState state) {
         return (state.getValue(VARIANT)).getMeta();
     }
 
+    @Override
     public int damageDropped(IBlockState state) {
         return this.getMetaFromState(state);
     }
 
+    @Override
     @Nonnull
     public String getModelName(ItemStack itemStack) {
         return BlockRock.EnumType.fromMeta(itemStack.getMetadata()).getName();
     }
 
+    @Override
     @Nonnull
     public IProperty<EnumType> getVariant() {
         return VARIANT;
@@ -107,10 +115,12 @@ public class BlockRockIgneousSand extends BlockRockBase implements IBlockVariant
             this.name = name;
         }
 
+        @Override
         public int getMeta() {
             return this.meta;
         }
 
+        @Override
         @Nonnull
         public String getName() {
             return this.name;
@@ -121,7 +131,7 @@ public class BlockRockIgneousSand extends BlockRockBase implements IBlockVariant
         }
 
         public ItemStack asStack(int amount) {
-            return new ItemStack(ModuleCore.Blocks.ROCK, amount, this.meta);
+            return new ItemStack(BlockInitializer.blockRockIgneousSand, amount, this.meta);
         }
 
         public static EnumType fromMeta(int meta) {

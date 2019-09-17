@@ -5,9 +5,11 @@ import com.codetaylor.mc.athenaeum.util.ModelRegistrationHelper;
 import com.codetaylor.mc.pyrotech.ModPyrotech;
 import com.codetaylor.mc.pyrotech.modules.tech.basic.block.spi.BlockAnvilBase;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -79,14 +81,76 @@ public class BlockInitializer {
     @SideOnly(Side.CLIENT)
     public static void onClientRegister(Registry registry) {
 
-        registry.registerClientModelRegistrationStrategy(() -> {
+        ModelRegistrationHelper.registerVariantBlockItemModels(
+                blockAnvilScoria.getDefaultState(),
+                BlockAnvilBase.DAMAGE,
+                value -> value
+        );
 
-            // Scoria Anvil
-            ModelRegistrationHelper.registerVariantBlockItemModels(
-                    blockAnvilScoria.getDefaultState(),
-                    BlockAnvilBase.DAMAGE,
-                    value -> value
-            );
-        });
+        ModelLoader.setCustomStateMapper(
+                blockRockIgneous,
+                (new StateMap.Builder()).withName(BlockRockIgneous.VARIANT).build()
+        );
+
+        ModelLoader.setCustomStateMapper(
+                blockRockIgneousSand,
+                (new StateMap.Builder()).withName(BlockRockIgneousSand.VARIANT).build()
+        );
+
+        ModelLoader.setCustomStateMapper(
+                blockRockMetamorphic,
+                (new StateMap.Builder()).withName(BlockRockMetamorphic.VARIANT).build()
+        );
+
+        ModelLoader.setCustomStateMapper(
+                blockRockMetamorphicSand,
+                (new StateMap.Builder()).withName(BlockRockMetamorphicSand.VARIANT).build()
+        );
+
+        ModelLoader.setCustomStateMapper(
+                blockRockSedimentary,
+                (new StateMap.Builder()).withName(BlockRockSedimentary.VARIANT).build()
+        );
+
+        ModelLoader.setCustomStateMapper(
+                blockRockSedimentarySand,
+                (new StateMap.Builder()).withName(BlockRockSedimentarySand.VARIANT).build()
+        );
+
+        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                PyrotechCompat.MODID,
+                blockRockIgneous,
+                BlockRockIgneous.VARIANT
+        );
+
+        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                PyrotechCompat.MODID,
+                blockRockIgneousSand,
+                BlockRockIgneousSand.VARIANT
+        );
+
+        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                PyrotechCompat.MODID,
+                blockRockMetamorphic,
+                BlockRockMetamorphic.VARIANT
+        );
+
+        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                PyrotechCompat.MODID,
+                blockRockMetamorphicSand,
+                BlockRockMetamorphicSand.VARIANT
+        );
+
+        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                PyrotechCompat.MODID,
+                blockRockSedimentary,
+                BlockRockSedimentary.VARIANT
+        );
+
+        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                PyrotechCompat.MODID,
+                blockRockSedimentarySand,
+                BlockRockSedimentarySand.VARIANT
+        );
     }
 }
