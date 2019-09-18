@@ -2,8 +2,8 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "undergroundbiomes:blocks/komalite",
-      "particle": "undergroundbiomes:blocks/komalite"
+      "all": "undergroundbiomes:blocks/chert",
+      "particle": "undergroundbiomes:blocks/chert"
     }
   },
   "variants": {

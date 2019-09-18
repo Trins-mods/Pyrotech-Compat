@@ -62,7 +62,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
     @Override
     @Nonnull
     public String getModelName(ItemStack itemStack) {
-        return BlockRock.EnumType.fromMeta(itemStack.getMetadata()).getName();
+        return EnumType.fromMeta(itemStack.getMetadata()).getName();
     }
 
     @Override
@@ -78,7 +78,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
         ANDESITE(3, "rock_andesite"),
         GABBRO(4, "rock_gabbro"),
         BASALT(5, "rock_basalt"),
-        KOMATITE(6, "rock_komatite"),
+        KOMATIITE(6, "rock_komatiite"),
         DACITE(7, "rock_dacite");
 
         private static final EnumType[] META_LOOKUP = (EnumType[]) Stream.of(values()).sorted(Comparator.comparing(EnumType::getMeta)).toArray((x$0) -> {

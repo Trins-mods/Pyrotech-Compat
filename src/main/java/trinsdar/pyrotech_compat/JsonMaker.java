@@ -11,14 +11,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class JsonMaker {
-    private static String[] variants = {"andesite", "basalt", "black_granite", "blue_schist", "chalk", "dacite", "dolomite", "eclogite", "gabbro", "gneiss", "green_schist", "greywacke", "komalite", "lignite", "limestone", "marble", "migmatite", "red_granite", "rhyolite", "siltstone", "soapstone"};
+    private static String[] variants = {"komalite", "shale", "chert", "quartzite"};
     private static String[] types = {"", "_sandstone", "_sand"};
     public static void init(FMLPreInitializationEvent event){
         for (String type : types){
             for (String variant : variants){
                 try {
                     JsonObject object = new JsonObject();
-                    File file = new File(event.getModConfigurationDirectory(),"pyresources/rock_" + variant + type + ".json");
+                    File file = new File(event.getModConfigurationDirectory(),"pyresources/itemmodels/rock_" + variant + type + ".json");
                     file.createNewFile();
                     JsonWriter writer = new JsonWriter(new FileWriter(file));
                     writer.beginObject();
@@ -30,7 +30,22 @@ public class JsonMaker {
                     writer.endObject();
                     writer.endObject();
                     writer.close();
-
+                    file = new File(event.getModConfigurationDirectory(),"pyresources/blockstates/rock_" + variant + type + ".json");
+                    file.createNewFile();
+                    writer = new JsonWriter(new FileWriter(file));
+                    writer.beginObject();
+                    writer.setIndent("  ");
+                    writer.name("forge_marker").value(1);
+                    writer.name("defaults");
+                    writer.beginObject();
+                    writeTextureObject(writer, variant, type);
+                    writer.endObject();
+                    writer.name("variants");
+                    writer.beginObject();
+                    writeVariantsArray(writer);
+                    writer.endObject();
+                    writer.endObject();
+                    writer.close();
                 } catch (Exception e){
                     e.printStackTrace();
                 }

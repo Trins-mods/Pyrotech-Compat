@@ -62,7 +62,7 @@ public class BlockRockMetamorphic extends BlockRockBase implements IBlockVariant
     @Override
     @Nonnull
     public String getModelName(ItemStack itemStack) {
-        return BlockRock.EnumType.fromMeta(itemStack.getMetadata()).getName();
+        return EnumType.fromMeta(itemStack.getMetadata()).getName();
     }
 
     @Override

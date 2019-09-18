@@ -2,8 +2,8 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "undergroundbiomes:blocks/komalite_sandstone_top",
-      "particle": "undergroundbiomes:blocks/komalite_sandstone_top"
+      "all": "undergroundbiomes:blocks/shale",
+      "particle": "undergroundbiomes:blocks/shale"
     }
   },
   "variants": {

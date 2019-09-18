@@ -77,7 +77,7 @@ public class BlockRockIgneousSand extends BlockRockBase implements IBlockVariant
     @Override
     @Nonnull
     public String getModelName(ItemStack itemStack) {
-        return BlockRock.EnumType.fromMeta(itemStack.getMetadata()).getName();
+        return EnumType.fromMeta(itemStack.getMetadata()).getName();
     }
 
     @Override
@@ -93,7 +93,7 @@ public class BlockRockIgneousSand extends BlockRockBase implements IBlockVariant
         ANDESITE_SAND(3, "rock_andesite_sand"),
         GABBRO_SAND(4, "rock_gabbro_sand"),
         BASALT_SAND(5, "rock_basalt_sand"),
-        KOMATITE_SAND(6, "rock_komatite_sand"),
+        KOMATIITE_SAND(6, "rock_komatiite_sand"),
         DACITE_SAND(7, "rock_dacite_sand"),
         RED_GRANITE_SANDSTONE(8, "rock_red_granite_sandstone"),
         BLACK_GRANITE_SANDSTONE(9, "rock_black_granite_sandstone"),
@@ -101,7 +101,7 @@ public class BlockRockIgneousSand extends BlockRockBase implements IBlockVariant
         ANDESITE_SANDSTONE(11, "rock_andesite_sandstone"),
         GABBRO_SANDSTONE(12, "rock_gabbro_sandstone"),
         BASALT_SANDSTONE(13, "rock_basalt_sandstone"),
-        KOMATITE_SANDSTONE(14, "rock_komatite_sandstone"),
+        KOMATIITE_SANDSTONE(14, "rock_komatiite_sandstone"),
         DACITE_SANDSTONE(15, "rock_dacite_sandstone");
 
         private static final EnumType[] META_LOOKUP = (EnumType[]) Stream.of(values()).sorted(Comparator.comparing(EnumType::getMeta)).toArray((x$0) -> {
