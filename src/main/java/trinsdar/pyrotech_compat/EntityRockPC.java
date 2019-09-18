@@ -6,6 +6,7 @@ import com.codetaylor.mc.pyrotech.modules.core.entity.EntityRock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityRockPC extends EntityRock {
     private IBlockState blockState;
+    public static final String  NAMEPC = "rock_pc";
 
     public EntityRockPC(World world) {
         super(world);
@@ -31,6 +33,10 @@ public class EntityRockPC extends EntityRock {
     public EntityRockPC(World world, EntityLivingBase throwerIn, int meta, IBlockState blockState) {
         super(world, throwerIn, meta);
         this.blockState = blockState;
+    }
+
+    public Item getItem(){
+        return Item.getItemFromBlock(this.blockState.getBlock());
     }
 
     @Override

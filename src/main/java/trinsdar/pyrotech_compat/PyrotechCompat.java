@@ -1,5 +1,6 @@
 package trinsdar.pyrotech_compat;
 
+import com.codetaylor.mc.athenaeum.network.NetworkEntityIdSupplier;
 import com.codetaylor.mc.athenaeum.registry.Registry;
 import com.codetaylor.mc.pyrotech.ModPyrotech;
 import net.minecraftforge.fml.common.Mod;
@@ -19,9 +20,14 @@ public class PyrotechCompat {
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event){
         //JsonMaker.init(event);
+        Registry registry = new Registry(MODID, ModPyrotech.CREATIVE_TAB);
+        NetworkEntityIdSupplier networkEntityIdSupplier = new NetworkEntityIdSupplier();
+        registry.setNetworkEntityIdSupplier(networkEntityIdSupplier);
         BlockInitializer.onRegister();
+        EntityInitializer.onRegister(registry);
         if (event.getSide().isClient()){
-            BlockInitializer.onClientRegister(new Registry(MODID, ModPyrotech.CREATIVE_TAB));
+            BlockInitializer.onClientRegister(registry);
+            EntityInitializer.onClientRegister();
         }
     }
 }
