@@ -5,6 +5,7 @@ import com.codetaylor.mc.athenaeum.util.ModelRegistrationHelper;
 import com.codetaylor.mc.pyrotech.ModPyrotech;
 import com.codetaylor.mc.pyrotech.modules.tech.basic.block.spi.BlockAnvilBase;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -15,12 +16,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import trinsdar.pyrotech_compat.block.BlockAnvilScoria;
+import trinsdar.pyrotech_compat.block.rocks.BlockRockBase;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneous;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneousSand;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockMetamorphic;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockMetamorphicSand;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockSedimentary;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockSedimentarySand;
+import trinsdar.pyrotech_compat.item.ItemRockBase;
 import trinsdar.pyrotech_compat.item.ItemRockIgneous;
 import trinsdar.pyrotech_compat.item.ItemRockIgneousSand;
 import trinsdar.pyrotech_compat.item.ItemRockMetamorphic;
@@ -43,6 +46,7 @@ public class BlockInitializer {
     public static final BlockRockMetamorphicSand blockRockMetamorphicSand = new BlockRockMetamorphicSand();
     public static final BlockRockSedimentary blockRockSedimentary = new BlockRockSedimentary();
     public static final BlockRockSedimentarySand blockRockSedimentarySand = new BlockRockSedimentarySand();
+    public static final BlockRockBase blockRockNetherrack = new BlockRockBase("rock_netherrack", SoundType.STONE);
 
     public static void onRegister() {
         instance.registerBlock(blockAnvilScoria, new BlockAnvilBase.ItemAnvil(blockAnvilScoria));
@@ -52,6 +56,7 @@ public class BlockInitializer {
         instance.registerBlock(blockRockIgneousSand, new ItemRockIgneousSand(blockRockIgneousSand));
         instance.registerBlock(blockRockMetamorphicSand, new ItemRockMetamorphicSand(blockRockMetamorphicSand));
         instance.registerBlock(blockRockSedimentarySand, new ItemRockSedimentarySand(blockRockSedimentarySand));
+        instance.registerBlock(blockRockNetherrack, new ItemRockBase(blockRockNetherrack));
         GameRegistry.registerTileEntity(TileAnvilScoria.class, new ResourceLocation(PyrotechCompat.MODID, "tile." + TileAnvilScoria.class.getSimpleName()));
     }
 
