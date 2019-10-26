@@ -48,15 +48,23 @@ public class BlockInitializer {
     public static final BlockRockSedimentarySand blockRockSedimentarySand = new BlockRockSedimentarySand();
     public static final BlockRockBase blockRockNetherrack = new BlockRockBase("rock_netherrack", SoundType.STONE);
 
+    public static final ItemRockIgneous itemRockIgneous = new ItemRockIgneous(blockRockIgneous);
+    public static final ItemRockIgneousSand itemRockIgneousSand = new ItemRockIgneousSand(blockRockIgneousSand);
+    public static final ItemRockMetamorphic itemRockMetamorphic = new ItemRockMetamorphic(blockRockMetamorphic);
+    public static final ItemRockMetamorphicSand itemRockMetamorphicSand = new ItemRockMetamorphicSand(blockRockMetamorphicSand);
+    public static final ItemRockSedimentary itemRockSedimentary = new ItemRockSedimentary(blockRockSedimentary);
+    public static final ItemRockSedimentarySand itemRockSedimentarySand = new ItemRockSedimentarySand(blockRockSedimentarySand);
+    public static final ItemRockBase itemRockNetherrack = new ItemRockBase(blockRockNetherrack);
+
     public static void onRegister() {
         instance.registerBlock(blockAnvilScoria, new BlockAnvilBase.ItemAnvil(blockAnvilScoria));
-        instance.registerBlock(blockRockIgneous, new ItemRockIgneous(blockRockIgneous));
-        instance.registerBlock(blockRockMetamorphic, new ItemRockMetamorphic(blockRockMetamorphic));
-        instance.registerBlock(blockRockSedimentary, new ItemRockSedimentary(blockRockSedimentary));
-        instance.registerBlock(blockRockIgneousSand, new ItemRockIgneousSand(blockRockIgneousSand));
-        instance.registerBlock(blockRockMetamorphicSand, new ItemRockMetamorphicSand(blockRockMetamorphicSand));
-        instance.registerBlock(blockRockSedimentarySand, new ItemRockSedimentarySand(blockRockSedimentarySand));
-        instance.registerBlock(blockRockNetherrack, new ItemRockBase(blockRockNetherrack));
+        instance.registerBlock(blockRockIgneous, itemRockIgneous);
+        instance.registerBlock(blockRockMetamorphic, itemRockMetamorphic);
+        instance.registerBlock(blockRockSedimentary, itemRockSedimentary);
+        instance.registerBlock(blockRockIgneousSand, itemRockIgneousSand);
+        instance.registerBlock(blockRockMetamorphicSand, itemRockMetamorphicSand);
+        instance.registerBlock(blockRockSedimentarySand, itemRockSedimentarySand);
+        instance.registerBlock(blockRockNetherrack, itemRockNetherrack);
         GameRegistry.registerTileEntity(TileAnvilScoria.class, new ResourceLocation(PyrotechCompat.MODID, "tile." + TileAnvilScoria.class.getSimpleName()));
     }
 

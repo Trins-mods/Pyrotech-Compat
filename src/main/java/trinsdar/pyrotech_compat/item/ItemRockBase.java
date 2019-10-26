@@ -1,5 +1,7 @@
 package trinsdar.pyrotech_compat.item;
 
+import com.codetaylor.mc.pyrotech.modules.core.ModuleCore;
+import com.codetaylor.mc.pyrotech.modules.core.ModuleCoreConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +13,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
+import trinsdar.pyrotech_compat.BlockInitializer;
 import trinsdar.pyrotech_compat.EntityRockPC;
 
 import javax.annotation.Nonnull;
@@ -44,6 +47,19 @@ public class ItemRockBase extends ItemBlock {
         }
 
         world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
+        if (ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS > 0) {
+            player.getCooldownTracker().setCooldown(this, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(ModuleCore.Items.ROCK_GRASS, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(ModuleCore.Items.ROCK, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(BlockInitializer.itemRockIgneous, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(BlockInitializer.itemRockIgneousSand, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(BlockInitializer.itemRockMetamorphic, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(BlockInitializer.itemRockMetamorphicSand, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(BlockInitializer.itemRockSedimentary, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(BlockInitializer.itemRockSedimentarySand, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+            player.getCooldownTracker().setCooldown(BlockInitializer.itemRockNetherrack, ModuleCoreConfig.ROCKS.THROW_COOLDOWN_TICKS);
+        }
 
         if (!world.isRemote) {
             EntityRockPC entity = new EntityRockPC(world, player, itemstack.getMetadata(), getBlockState(itemstack));

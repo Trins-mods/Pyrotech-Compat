@@ -17,13 +17,13 @@ public class ItemRockIgneous extends ItemRockBase {
 
     @Override
     protected IBlockState getBlockState(ItemStack stack) {
-        return  BlockInitializer.blockRockIgneous.getDefaultState().withProperty(BlockRockIgneous.VARIANT, BlockRockIgneous.EnumType.fromMeta(stack.getMetadata()));
+        return  BlockInitializer.blockRockIgneous.getDefaultState().withProperty(BlockRockIgneous.VARIANT, BlockRockIgneous.EnumType.fromMetadata(stack.getMetadata()));
     }
 
     @Nonnull
     @Override
     public String getUnlocalizedName(ItemStack stack) {
 
-        return "tile." + PyrotechCompat.MODID + "." + BlockRockIgneous.EnumType.fromMeta(stack.getMetadata()).getName();
+        return "tile." + PyrotechCompat.MODID + "." + BlockRockIgneous.EnumType.fromMetadata(stack.getMetadata()).getName();
     }
 }

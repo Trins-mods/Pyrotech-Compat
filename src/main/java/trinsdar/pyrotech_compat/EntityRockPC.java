@@ -1,7 +1,5 @@
 package trinsdar.pyrotech_compat;
 
-import com.codetaylor.mc.pyrotech.modules.core.ModuleCore;
-import com.codetaylor.mc.pyrotech.modules.core.block.BlockRock;
 import com.codetaylor.mc.pyrotech.modules.core.entity.EntityRock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;

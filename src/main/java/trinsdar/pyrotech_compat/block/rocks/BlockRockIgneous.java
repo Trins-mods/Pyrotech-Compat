@@ -13,6 +13,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import trinsdar.pyrotech_compat.BlockInitializer;
+import trinsdar.pyrotech_compat.IRockType;
 
 import javax.annotation.Nonnull;
 import java.util.Comparator;
@@ -46,7 +47,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
     @Override
     @Nonnull
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(VARIANT, EnumType.fromMeta(meta));
+        return this.getDefaultState().withProperty(VARIANT, EnumType.fromMetadata(meta));
     }
 
     @Override
@@ -62,7 +63,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
     @Override
     @Nonnull
     public String getModelName(ItemStack itemStack) {
-        return EnumType.fromMeta(itemStack.getMetadata()).getName();
+        return EnumType.fromMetadata(itemStack.getMetadata()).getName();
     }
 
     @Override
@@ -71,7 +72,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
         return VARIANT;
     }
 
-    public static enum EnumType implements IVariant {
+    public static enum EnumType implements IVariant, IRockType {
         RED_GRANITE(0, "rock_red_granite"),
         BLACK_GRANITE(1, "rock_black_granite"),
         RHYOLITE(2, "rock_rhyolite"),
@@ -81,7 +82,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
         KOMATIITE(6, "rock_komatiite"),
         DACITE(7, "rock_dacite");
 
-        private static final EnumType[] META_LOOKUP = (EnumType[]) Stream.of(values()).sorted(Comparator.comparing(EnumType::getMeta)).toArray((x$0) -> {
+        private static final EnumType[] META_LOOKUP = Stream.of(values()).sorted(Comparator.comparing(EnumType::getMeta)).toArray((x$0) -> {
             return new EnumType[x$0];
         });
         private final int meta;
@@ -103,20 +104,27 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
             return this.name;
         }
 
+        @Override
         public ItemStack asStack() {
             return this.asStack(1);
         }
 
+        @Override
         public ItemStack asStack(int amount) {
             return new ItemStack(BlockInitializer.blockRockIgneous, amount, this.meta);
         }
 
-        public static EnumType fromMeta(int meta) {
+        public static EnumType fromMetadata(int meta) {
             if (meta < 0 || meta >= META_LOOKUP.length) {
                 meta = 0;
             }
 
             return META_LOOKUP[meta];
+        }
+
+        @Override
+        public EnumType fromMeta(int meta) {
+            return fromMetadata(meta);
         }
     }
 }
