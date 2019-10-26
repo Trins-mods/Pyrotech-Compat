@@ -54,11 +54,11 @@ repositories{
 }
 
 dependencies {
-    deobfCompile curse.resolve("underground-biomes", "2771415")
-    deobfCompile curse.resolve("pyrotech", "2780601")
-    deobfCompile curse.resolve("primalcore", "2734701")
-    deobfCompile curse.resolve("athenaeum", "2780353")
-    deobfCompile curse.resolve("dropt", "2778545")
+//    deobfCompile curse.resolve("underground-biomes", "2771415")
+//    deobfCompile curse.resolve("pyrotech", "2780601")
+//    deobfCompile curse.resolve("primalcore", "2734701")
+//    deobfCompile curse.resolve("athenaeum", "2780353")
+//    deobfCompile curse.resolve("dropt", "2778545")
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
     deobfCompile(group: 'CraftTweaker2', name: 'ZenScript', version: craft_tweaker_version) {
