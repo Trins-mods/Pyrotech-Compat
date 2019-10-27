@@ -92,7 +92,7 @@ public class BlockInitializer {
     }
 
     @SideOnly(Side.CLIENT)
-    public static void onClientRegister(Registry registry) {
+    public static void onClientRegister() {
 
         ModelRegistrationHelper.registerVariantBlockItemModels(
                 blockAnvilScoria.getDefaultState(),

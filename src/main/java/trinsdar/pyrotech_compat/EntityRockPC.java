@@ -20,6 +20,7 @@ import javax.annotation.Nonnull;
 
 public class EntityRockPC extends EntityThrowable {
     private IBlockState blockState;
+    private Item item;
     public static final String  NAMEPC = "rock_pc";
 
     private static final DataParameter<Integer> META = EntityDataManager.createKey(EntityRockPC.class, DataSerializers.VARINT);
@@ -29,29 +30,32 @@ public class EntityRockPC extends EntityThrowable {
         super(world);
     }
 
-    public EntityRockPC(World world, int meta, IBlockState blockState) {
+    public EntityRockPC(World world, int meta, IBlockState blockState, Item item) {
         super(world);
         this.meta = meta;
         this.dataManager.set(META, meta);
         this.blockState = blockState;
+        this.item = item;
     }
 
-    public EntityRockPC(World world, double x, double y, double z, int meta, IBlockState blockState) {
+    public EntityRockPC(World world, double x, double y, double z, int meta, IBlockState blockState, Item item) {
         super(world, x, y, z);
         this.meta = meta;
         this.dataManager.set(META, meta);
         this.blockState = blockState;
+        this.item = item;
     }
 
-    public EntityRockPC(World world, EntityLivingBase throwerIn, int meta, IBlockState blockState) {
+    public EntityRockPC(World world, EntityLivingBase throwerIn, int meta, IBlockState blockState, Item item) {
         super(world, throwerIn);
         this.meta = meta;
         this.dataManager.set(META, meta);
         this.blockState = blockState;
+        this.item = item;
     }
 
     public Item getItem(){
-        return Item.getItemFromBlock(this.blockState.getBlock());
+        return item;
     }
 
     public int getMeta() {

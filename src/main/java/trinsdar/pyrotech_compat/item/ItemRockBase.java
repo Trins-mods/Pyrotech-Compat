@@ -60,7 +60,7 @@ public class ItemRockBase extends ItemBlock {
         }
 
         if (!world.isRemote) {
-            EntityRockPC entity = new EntityRockPC(world, player, itemstack.getMetadata(), getBlockState(itemstack));
+            EntityRockPC entity = new EntityRockPC(world, player, itemstack.getMetadata(), getBlockState(itemstack), this);
             entity.shoot(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.5f, 1.0f);
             world.spawnEntity(entity);
         }
