@@ -21,7 +21,6 @@ import javax.annotation.Nonnull;
 public class ItemRockBase extends ItemBlock {
 
     public ItemRockBase(Block block) {
-
         super(block);
     }
 
@@ -32,7 +31,6 @@ public class ItemRockBase extends ItemBlock {
     @Nonnull
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-
         return this.block.getUnlocalizedName();
     }
 

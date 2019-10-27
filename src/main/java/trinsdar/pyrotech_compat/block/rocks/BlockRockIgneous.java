@@ -2,8 +2,6 @@ package trinsdar.pyrotech_compat.block.rocks;
 
 import com.codetaylor.mc.athenaeum.spi.IBlockVariant;
 import com.codetaylor.mc.athenaeum.spi.IVariant;
-import com.codetaylor.mc.pyrotech.modules.core.ModuleCore;
-import com.codetaylor.mc.pyrotech.modules.core.block.BlockRock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -13,7 +11,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import trinsdar.pyrotech_compat.BlockInitializer;
-import trinsdar.pyrotech_compat.IRockType;
 
 import javax.annotation.Nonnull;
 import java.util.Comparator;
@@ -47,7 +44,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
     @Override
     @Nonnull
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(VARIANT, EnumType.fromMetadata(meta));
+        return this.getDefaultState().withProperty(VARIANT, EnumType.fromMeta(meta));
     }
 
     @Override
@@ -63,7 +60,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
     @Override
     @Nonnull
     public String getModelName(ItemStack itemStack) {
-        return EnumType.fromMetadata(itemStack.getMetadata()).getName();
+        return EnumType.fromMeta(itemStack.getMetadata()).getName();
     }
 
     @Override
@@ -72,7 +69,7 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
         return VARIANT;
     }
 
-    public static enum EnumType implements IVariant, IRockType {
+    public static enum EnumType implements IVariant {
         RED_GRANITE(0, "rock_red_granite"),
         BLACK_GRANITE(1, "rock_black_granite"),
         RHYOLITE(2, "rock_rhyolite"),
@@ -104,27 +101,20 @@ public class BlockRockIgneous extends BlockRockBase implements IBlockVariant<Blo
             return this.name;
         }
 
-        @Override
         public ItemStack asStack() {
             return this.asStack(1);
         }
 
-        @Override
         public ItemStack asStack(int amount) {
             return new ItemStack(BlockInitializer.blockRockIgneous, amount, this.meta);
         }
 
-        public static EnumType fromMetadata(int meta) {
+        public static EnumType fromMeta(int meta) {
             if (meta < 0 || meta >= META_LOOKUP.length) {
                 meta = 0;
             }
 
             return META_LOOKUP[meta];
-        }
-
-        @Override
-        public EnumType fromMeta(int meta) {
-            return fromMetadata(meta);
         }
     }
 }
