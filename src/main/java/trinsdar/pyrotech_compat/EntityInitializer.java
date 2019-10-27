@@ -16,14 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 
 public class EntityInitializer {
-    public void onRegister(Registry registry) {
-        int entityId = 1;
-        EntityRegistry.registerModEntity(new ResourceLocation(PyrotechCompat.MODID,EntityRockPC.NAMEPC), EntityRockPC.class, "RockPC", entityId++, PyrotechCompat.class, 80, 1, true);
-        registry.createEntityEntry(EntityRockPC.NAMEPC, EntityEntryBuilder.create()
-                .entity(EntityRockPC.class)
-                .tracker(80, 1, true)
-        );
-    }
 
     @SideOnly(Side.CLIENT)
     public static void onClientRegister() {
