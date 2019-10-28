@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -57,15 +58,20 @@ public class BlockInitializer {
     public static final ItemRockBase itemRockNetherrack = new ItemRockBase(blockRockNetherrack);
 
     public static void onRegister() {
-        instance.registerBlock(blockAnvilScoria, new BlockAnvilBase.ItemAnvil(blockAnvilScoria));
-        instance.registerBlock(blockRockIgneous, itemRockIgneous);
-        instance.registerBlock(blockRockMetamorphic, itemRockMetamorphic);
-        instance.registerBlock(blockRockSedimentary, itemRockSedimentary);
-        instance.registerBlock(blockRockIgneousSand, itemRockIgneousSand);
-        instance.registerBlock(blockRockMetamorphicSand, itemRockMetamorphicSand);
-        instance.registerBlock(blockRockSedimentarySand, itemRockSedimentarySand);
+        if (Loader.isModLoaded("primal")){
+            instance.registerBlock(blockAnvilScoria, new BlockAnvilBase.ItemAnvil(blockAnvilScoria));
+            GameRegistry.registerTileEntity(TileAnvilScoria.class, new ResourceLocation(PyrotechCompat.MODID, "tile." + TileAnvilScoria.class.getSimpleName()));
+        }
+        if (Loader.isModLoaded("undergroundbiomes")){
+            instance.registerBlock(blockRockIgneous, itemRockIgneous);
+            instance.registerBlock(blockRockMetamorphic, itemRockMetamorphic);
+            instance.registerBlock(blockRockSedimentary, itemRockSedimentary);
+            instance.registerBlock(blockRockIgneousSand, itemRockIgneousSand);
+            instance.registerBlock(blockRockMetamorphicSand, itemRockMetamorphicSand);
+            instance.registerBlock(blockRockSedimentarySand, itemRockSedimentarySand);
+        }
         instance.registerBlock(blockRockNetherrack, itemRockNetherrack);
-        GameRegistry.registerTileEntity(TileAnvilScoria.class, new ResourceLocation(PyrotechCompat.MODID, "tile." + TileAnvilScoria.class.getSimpleName()));
+
     }
 
     static <T extends Block, I extends Item> T registerBlock(T block, I item) {
@@ -94,78 +100,80 @@ public class BlockInitializer {
     @SideOnly(Side.CLIENT)
     public static void onClientRegister() {
 
-        ModelRegistrationHelper.registerVariantBlockItemModels(
-                blockAnvilScoria.getDefaultState(),
-                BlockAnvilBase.DAMAGE,
-                value -> value
-        );
+        if (Loader.isModLoaded("primal")){
+            ModelRegistrationHelper.registerVariantBlockItemModels(
+                    blockAnvilScoria.getDefaultState(),
+                    BlockAnvilBase.DAMAGE,
+                    value -> value
+            );
+        }
+        if (Loader.isModLoaded("undergroundbiomes")){
+            ModelLoader.setCustomStateMapper(
+                    blockRockIgneous,
+                    (new StateMap.Builder()).withName(BlockRockIgneous.VARIANT).build()
+            );
 
-        ModelLoader.setCustomStateMapper(
-                blockRockIgneous,
-                (new StateMap.Builder()).withName(BlockRockIgneous.VARIANT).build()
-        );
+            ModelLoader.setCustomStateMapper(
+                    blockRockIgneousSand,
+                    (new StateMap.Builder()).withName(BlockRockIgneousSand.VARIANT).build()
+            );
 
-        ModelLoader.setCustomStateMapper(
-                blockRockIgneousSand,
-                (new StateMap.Builder()).withName(BlockRockIgneousSand.VARIANT).build()
-        );
+            ModelLoader.setCustomStateMapper(
+                    blockRockMetamorphic,
+                    (new StateMap.Builder()).withName(BlockRockMetamorphic.VARIANT).build()
+            );
 
-        ModelLoader.setCustomStateMapper(
-                blockRockMetamorphic,
-                (new StateMap.Builder()).withName(BlockRockMetamorphic.VARIANT).build()
-        );
+            ModelLoader.setCustomStateMapper(
+                    blockRockMetamorphicSand,
+                    (new StateMap.Builder()).withName(BlockRockMetamorphicSand.VARIANT).build()
+            );
 
-        ModelLoader.setCustomStateMapper(
-                blockRockMetamorphicSand,
-                (new StateMap.Builder()).withName(BlockRockMetamorphicSand.VARIANT).build()
-        );
+            ModelLoader.setCustomStateMapper(
+                    blockRockSedimentary,
+                    (new StateMap.Builder()).withName(BlockRockSedimentary.VARIANT).build()
+            );
 
-        ModelLoader.setCustomStateMapper(
-                blockRockSedimentary,
-                (new StateMap.Builder()).withName(BlockRockSedimentary.VARIANT).build()
-        );
+            ModelLoader.setCustomStateMapper(
+                    blockRockSedimentarySand,
+                    (new StateMap.Builder()).withName(BlockRockSedimentarySand.VARIANT).build()
+            );
 
-        ModelLoader.setCustomStateMapper(
-                blockRockSedimentarySand,
-                (new StateMap.Builder()).withName(BlockRockSedimentarySand.VARIANT).build()
-        );
+            ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                    PyrotechCompat.MODID,
+                    blockRockIgneous,
+                    BlockRockIgneous.VARIANT
+            );
 
+            ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                    PyrotechCompat.MODID,
+                    blockRockIgneousSand,
+                    BlockRockIgneousSand.VARIANT
+            );
+
+            ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                    PyrotechCompat.MODID,
+                    blockRockMetamorphic,
+                    BlockRockMetamorphic.VARIANT
+            );
+
+            ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                    PyrotechCompat.MODID,
+                    blockRockMetamorphicSand,
+                    BlockRockMetamorphicSand.VARIANT
+            );
+
+            ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                    PyrotechCompat.MODID,
+                    blockRockSedimentary,
+                    BlockRockSedimentary.VARIANT
+            );
+
+            ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
+                    PyrotechCompat.MODID,
+                    blockRockSedimentarySand,
+                    BlockRockSedimentarySand.VARIANT
+            );
+        }
         ModelRegistrationHelper.registerItemModels(itemRockNetherrack);
-
-        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
-                PyrotechCompat.MODID,
-                blockRockIgneous,
-                BlockRockIgneous.VARIANT
-        );
-
-        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
-                PyrotechCompat.MODID,
-                blockRockIgneousSand,
-                BlockRockIgneousSand.VARIANT
-        );
-
-        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
-                PyrotechCompat.MODID,
-                blockRockMetamorphic,
-                BlockRockMetamorphic.VARIANT
-        );
-
-        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
-                PyrotechCompat.MODID,
-                blockRockMetamorphicSand,
-                BlockRockMetamorphicSand.VARIANT
-        );
-
-        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
-                PyrotechCompat.MODID,
-                blockRockSedimentary,
-                BlockRockSedimentary.VARIANT
-        );
-
-        ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
-                PyrotechCompat.MODID,
-                blockRockSedimentarySand,
-                BlockRockSedimentarySand.VARIANT
-        );
     }
 }
