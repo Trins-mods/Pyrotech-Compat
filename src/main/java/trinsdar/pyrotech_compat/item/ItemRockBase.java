@@ -5,7 +5,9 @@ import com.codetaylor.mc.pyrotech.modules.core.ModuleCoreConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -14,7 +16,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import trinsdar.pyrotech_compat.BlockInitializer;
-import trinsdar.pyrotech_compat.EntityRockPC;
+import trinsdar.pyrotech_compat.entity.EntityRockBase;
 
 import javax.annotation.Nonnull;
 
@@ -26,6 +28,14 @@ public class ItemRockBase extends ItemBlock {
 
     protected IBlockState getBlockState(ItemStack stack){
         return this.block.getDefaultState();
+    }
+
+    protected Item getItem(){
+        return BlockInitializer.itemRockNetherrack;
+    }
+
+    protected EntityThrowable createEntity(World world, EntityPlayer player, int meta){
+        return new EntityRockBase(world, player, meta);
     }
 
     @Nonnull
@@ -60,7 +70,7 @@ public class ItemRockBase extends ItemBlock {
         }
 
         if (!world.isRemote) {
-            EntityRockPC entity = new EntityRockPC(world, player, itemstack.getMetadata(), getBlockState(itemstack), this);
+            EntityThrowable entity = createEntity(world, player, itemstack.getMetadata());
             entity.shoot(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.5f, 1.0f);
             world.spawnEntity(entity);
         }
@@ -70,7 +80,6 @@ public class ItemRockBase extends ItemBlock {
 
     @Override
     public int getMetadata(int damage) {
-
         return damage;
     }
 }

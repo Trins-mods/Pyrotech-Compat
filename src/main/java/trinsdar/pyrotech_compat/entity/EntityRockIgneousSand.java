@@ -1,11 +1,9 @@
-package trinsdar.pyrotech_compat;
+package trinsdar.pyrotech_compat.entity;
 
-import com.codetaylor.mc.pyrotech.modules.core.entity.EntityRock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.item.Item;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -15,47 +13,38 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import trinsdar.pyrotech_compat.BlockInitializer;
+import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneous;
+import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneousSand;
 
 import javax.annotation.Nonnull;
 
-public class EntityRockPC extends EntityThrowable {
-    private IBlockState blockState;
-    private Item item;
-    public static final String  NAMEPC = "rock_pc";
+public class EntityRockIgneousSand extends EntityThrowable {
+    public static final String  NAME = "rock_igneous_sand";
 
-    private static final DataParameter<Integer> META = EntityDataManager.createKey(EntityRockPC.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> META = EntityDataManager.createKey(EntityRockIgneousSand.class, DataSerializers.VARINT);
     private int meta;
 
-    public EntityRockPC(World world) {
+    public EntityRockIgneousSand(World world) {
         super(world);
     }
 
-    public EntityRockPC(World world, int meta, IBlockState blockState, Item item) {
+    public EntityRockIgneousSand(World world, int meta) {
         super(world);
         this.meta = meta;
         this.dataManager.set(META, meta);
-        this.blockState = blockState;
-        this.item = item;
     }
 
-    public EntityRockPC(World world, double x, double y, double z, int meta, IBlockState blockState, Item item) {
+    public EntityRockIgneousSand(World world, double x, double y, double z, int meta) {
         super(world, x, y, z);
         this.meta = meta;
         this.dataManager.set(META, meta);
-        this.blockState = blockState;
-        this.item = item;
     }
 
-    public EntityRockPC(World world, EntityLivingBase throwerIn, int meta, IBlockState blockState, Item item) {
+    public EntityRockIgneousSand(World world, EntityLivingBase throwerIn, int meta) {
         super(world, throwerIn);
         this.meta = meta;
         this.dataManager.set(META, meta);
-        this.blockState = blockState;
-        this.item = item;
-    }
-
-    public Item getItem(){
-        return item;
     }
 
     public int getMeta() {
@@ -66,6 +55,7 @@ public class EntityRockPC extends EntityThrowable {
     @SideOnly(Side.CLIENT)
     public void handleStatusUpdate(byte id) {
         if (id == 3) {
+            IBlockState blockState = BlockInitializer.blockRockIgneousSand.getDefaultState().withProperty(BlockRockIgneousSand.VARIANT, BlockRockIgneousSand.EnumType.fromMeta(meta));
             for(int i = 0; i < 8; ++i) {
                 this.world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, Block.getStateId(blockState));
             }

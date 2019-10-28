@@ -2,10 +2,16 @@ package trinsdar.pyrotech_compat.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import trinsdar.pyrotech_compat.BlockInitializer;
 import trinsdar.pyrotech_compat.PyrotechCompat;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockSedimentary;
+import trinsdar.pyrotech_compat.entity.EntityRockIgneous;
+import trinsdar.pyrotech_compat.entity.EntityRockSedimentary;
 
 import javax.annotation.Nonnull;
 
@@ -16,8 +22,8 @@ public class ItemRockSedimentary extends ItemRockBase {
     }
 
     @Override
-    protected IBlockState getBlockState(ItemStack stack) {
-        return  BlockInitializer.blockRockSedimentary.getDefaultState().withProperty(BlockRockSedimentary.VARIANT, BlockRockSedimentary.EnumType.fromMeta(stack.getMetadata()));
+    protected EntityThrowable createEntity(World world, EntityPlayer player, int meta){
+        return new EntityRockSedimentary(world, player, meta);
     }
 
     @Nonnull

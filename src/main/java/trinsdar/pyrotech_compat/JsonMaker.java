@@ -11,45 +11,30 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class JsonMaker {
-    private static String[] variants = {"komalite", "shale", "chert", "quartzite"};
-    private static String[] types = {"", "_sandstone", "_sand"};
+    private static String[] variants = {"Red_Granite", "Black_Granite", "Rhyolite", "Andesite", "Gabbro", "Basalt", "Komatiite", "Dacite", "Gneiss", "Eclogite", "Marble", "Quartzite", "Blue_Schist", "Green_Schist", "Soapstone", "Migmatite", "Chalk", "Shale", "Siltstone", "Dolomite", "Greywacke", "Chert"};
+    private static String[] types = {"", "_Sandstone", "_sand"};
     public static void init(FMLPreInitializationEvent event){
-        for (String type : types){
-            for (String variant : variants){
-                try {
-                    JsonObject object = new JsonObject();
-                    File file = new File(event.getModConfigurationDirectory(),"pyresources/itemmodels/rock_" + variant + type + ".json");
-                    file.createNewFile();
-                    JsonWriter writer = new JsonWriter(new FileWriter(file));
-                    writer.beginObject();
-                    writer.setIndent("  ");
-                    writer.name("parent").value("item/generated");
-                    writer.name("textures");
-                    writer.beginObject();
-                        writer.name("layer0").value("pyrotech_compat:items/rock_" + variant + type);
-                    writer.endObject();
-                    writer.endObject();
-                    writer.close();
-                    file = new File(event.getModConfigurationDirectory(),"pyresources/blockstates/rock_" + variant + type + ".json");
-                    file.createNewFile();
-                    writer = new JsonWriter(new FileWriter(file));
-                    writer.beginObject();
-                    writer.setIndent("  ");
-                    writer.name("forge_marker").value(1);
-                    writer.name("defaults");
-                    writer.beginObject();
-                    writeTextureObject(writer, variant, type);
-                    writer.endObject();
-                    writer.name("variants");
-                    writer.beginObject();
-                    writeVariantsArray(writer);
-                    writer.endObject();
-                    writer.endObject();
-                    writer.close();
-                } catch (Exception e){
-                    e.printStackTrace();
+        try {
+            JsonObject object = new JsonObject();
+            File file = new File("/home/trinsdar/IdeaProjects/modprojects/Pyrotech-Compat/src/main/resources/assets/pyrotech_compat/lang/en_us.json");
+            file.createNewFile();
+            JsonWriter writer = new JsonWriter(new FileWriter(file));
+            writer.beginObject();
+            writer.setIndent("  ");
+            for (String type : types){
+                for (String variant : variants){
+                    if (type.equalsIgnoreCase("_sand")){
+                        writer.name("tile.pyrotech_compat.rock_" + variant.toLowerCase() + type.toLowerCase() + ".name").value(variant.replace('_',' ')  + " Sand Pile");
+                    } else {
+                        writer.name("tile.pyrotech_compat.rock_" + variant.toLowerCase() + type.toLowerCase() + ".name").value(variant.replace('_',' ') + type.replace('_', ' ') + " Rock");
+                    }
+
                 }
             }
+            writer.endObject();
+            writer.close();
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 
