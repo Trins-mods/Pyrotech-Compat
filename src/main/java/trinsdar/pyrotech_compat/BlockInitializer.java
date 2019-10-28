@@ -130,6 +130,8 @@ public class BlockInitializer {
                 (new StateMap.Builder()).withName(BlockRockSedimentarySand.VARIANT).build()
         );
 
+        ModelRegistrationHelper.registerBlockItemModel(blockRockNetherrack.getDefaultState());
+
         ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
                 PyrotechCompat.MODID,
                 blockRockIgneous,
