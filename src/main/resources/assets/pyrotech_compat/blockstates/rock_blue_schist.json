@@ -2,8 +2,8 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "undergroundbiomes:blocks/blue_schist",
-      "particle": "undergroundbiomes:blocks/blue_schist"
+      "all": "undergroundbiomes:blocks/blueschist",
+      "particle": "undergroundbiomes:blocks/blueschist"
     }
   },
   "variants": {

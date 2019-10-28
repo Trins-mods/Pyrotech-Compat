@@ -2,8 +2,8 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "undergroundbiomes:blocks/green_schist_sandstone_top",
-      "particle": "undergroundbiomes:blocks/green_schist_sandstone_top"
+      "all": "undergroundbiomes:blocks/greenschist_sandstone_top",
+      "particle": "undergroundbiomes:blocks/greenschist_sandstone_top"
     }
   },
   "variants": {
