@@ -3,8 +3,6 @@ package trinsdar.pyrotech_compat;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import org.apache.logging.log4j.Logger;
@@ -46,6 +44,5 @@ public class PyrotechCompat {
             BlockInitializer.onClientRegister();
             EntityInitializer.onClientRegister();
         }
-
     }
 }
