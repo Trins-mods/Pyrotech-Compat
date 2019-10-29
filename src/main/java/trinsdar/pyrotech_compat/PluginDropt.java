@@ -402,7 +402,6 @@ public class PluginDropt {
                     .addDrops(new IDroptDropBuilder[]{
                             drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(10)),
-                            drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("igneous", 2)}, range(1, 3)).selector(weight(10)),
@@ -427,7 +426,6 @@ public class PluginDropt {
                     .addDrops(new IDroptDropBuilder[]{
                             drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
                             drop().items(new String[]{rockGranite}, range(1, 2)).selector(weight(2)),
-                            drop().items(new String[]{rockDiorite}, range(1, 2)).selector(weight(2)),
                             drop().items(new String[]{rockAndesite}, range(1, 2)).selector(weight(2)),
                             drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(2)),
                             drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(2)),
@@ -456,7 +454,6 @@ public class PluginDropt {
                         .addDrops(new IDroptDropBuilder[]{
                                 drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(1)),
-                                drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(1)),
@@ -481,7 +478,6 @@ public class PluginDropt {
                     )
                     .addDrops(new IDroptDropBuilder[]{
                             drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
-                            drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(10)),
@@ -490,8 +486,7 @@ public class PluginDropt {
                             drop().items(new String[]{rock("metamorphic", 4)}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("metamorphic", 5)}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("metamorphic", 6)}, range(1, 3)).selector(weight(10)),
-                            drop().items(new String[]{rock("metamorphic", 7)}, range(1, 3)).selector(weight(10)),
-                            drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(10))
+                            drop().items(new String[]{rock("metamorphic", 7)}, range(1, 3)).selector(weight(10))
                     })
             );
 
@@ -506,9 +501,7 @@ public class PluginDropt {
                     .dropStrategy(EnumDropStrategy.UNIQUE)
                     .addDrops(new IDroptDropBuilder[]{
                             drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
-                            drop().items(new String[]{rockGranite}, range(1, 2)).selector(weight(2)),
                             drop().items(new String[]{rockDiorite}, range(1, 2)).selector(weight(2)),
-                            drop().items(new String[]{rockAndesite}, range(1, 2)).selector(weight(2)),
                             drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(2)),
                             drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(2)),
                             drop().items(new String[]{rock("metamorphic", 2)}, range(1, 3)).selector(weight(2)),
@@ -535,9 +528,7 @@ public class PluginDropt {
                         .dropStrategy(EnumDropStrategy.UNIQUE)
                         .addDrops(new IDroptDropBuilder[]{
                                 drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
-                                drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(1)),
-                                drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rock("metamorphic", 2)}, range(1, 3)).selector(weight(1)),
@@ -561,8 +552,6 @@ public class PluginDropt {
                     )
                     .addDrops(new IDroptDropBuilder[]{
                             drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
-                            drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(10)),
-                            drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(10)),
                             drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(10)),
@@ -585,9 +574,6 @@ public class PluginDropt {
                     .dropStrategy(EnumDropStrategy.UNIQUE)
                     .addDrops(new IDroptDropBuilder[]{
                             drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
-                            drop().items(new String[]{rockGranite}, range(1, 2)).selector(weight(2)),
-                            drop().items(new String[]{rockDiorite}, range(1, 2)).selector(weight(2)),
-                            drop().items(new String[]{rockAndesite}, range(1, 2)).selector(weight(2)),
                             drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(2)),
                             drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(2)),
                             drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(2)),
@@ -613,9 +599,6 @@ public class PluginDropt {
                         .dropStrategy(EnumDropStrategy.UNIQUE)
                         .addDrops(new IDroptDropBuilder[]{
                                 drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
-                                drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(1)),
-                                drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(1)),
-                                drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(1)),
                                 drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(1)),
@@ -701,22 +684,6 @@ public class PluginDropt {
         }
 
         // -------------------------------------------------------------------------
-        // - Limestone
-        // -------------------------------------------------------------------------
-
-        /*if (enabled("limestone")) {
-            String matchBlock = item("pyrotech", "limestone");
-            String rock = item(BlockRock.NAME, BlockRock.EnumType.LIMESTONE.getMeta());
-            this.addRockDrops(matchBlock, rock, list);
-        }
-
-        if (enabled("limestone_cobbled")) {
-            String rock = item(BlockRock.NAME, BlockRock.EnumType.LIMESTONE.getMeta());
-            this.addRockDrops(cobbledLimestone, rock, cobbledLimestone, list);
-            this.addBlockReplace(cobbledLimestone, cobbledLimestone, list);
-        }*/
-
-        // -------------------------------------------------------------------------
         // - Stone / Cobblestone
         // -------------------------------------------------------------------------
 
@@ -728,6 +695,19 @@ public class PluginDropt {
                 matchBlock = ubc("metamorphic", "stone", meta);
                 rock = rock("metamorphic", meta);
                 this.addRockDrops(matchBlock, rock, list);
+                matchBlock = ubc("sedimentary", "stone", meta);
+                if (meta == 0){
+                    rock = item(BlockRock.NAME, BlockRock.EnumType.LIMESTONE.getMeta());
+                    this.addRockDrops(matchBlock, rock, list);
+                } else if (meta < 4){
+                    rock = rock("sedimentary", meta - 1);
+                    this.addRockDrops(matchBlock, rock, list);
+                } else if (meta == 4){
+                    continue;
+                } else{
+                    rock = rock("sedimentary", meta - 2);
+                    this.addRockDrops(matchBlock, rock, list);
+                }
             }
         }
 
@@ -741,6 +721,8 @@ public class PluginDropt {
                 this.addRockDrops(matchBlock, rock, list);
             }
         }
+
+        this.addRockDrops(item("minecraft", "netherrack"), item(PyrotechCompat.MODID, "rock_netherrack"), list);
 
         ResourceLocation resourceLocation = new ResourceLocation(PyrotechCompat.MODID, "rock");
         registerRuleList(resourceLocation, 0, list);
