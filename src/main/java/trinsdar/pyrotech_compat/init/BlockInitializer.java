@@ -1,6 +1,5 @@
-package trinsdar.pyrotech_compat;
+package trinsdar.pyrotech_compat.init;
 
-import com.codetaylor.mc.athenaeum.registry.Registry;
 import com.codetaylor.mc.athenaeum.util.ModelRegistrationHelper;
 import com.codetaylor.mc.pyrotech.ModPyrotech;
 import com.codetaylor.mc.pyrotech.modules.tech.basic.block.spi.BlockAnvilBase;
@@ -16,6 +15,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import trinsdar.pyrotech_compat.PyrotechCompat;
 import trinsdar.pyrotech_compat.block.BlockAnvilScoria;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockBase;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneous;

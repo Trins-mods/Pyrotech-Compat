@@ -2,8 +2,6 @@ package trinsdar.pyrotech_compat.block.rocks;
 
 import com.codetaylor.mc.athenaeum.spi.IBlockVariant;
 import com.codetaylor.mc.athenaeum.spi.IVariant;
-import com.codetaylor.mc.pyrotech.modules.core.ModuleCore;
-import com.codetaylor.mc.pyrotech.modules.core.block.BlockRock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -15,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import trinsdar.pyrotech_compat.BlockInitializer;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

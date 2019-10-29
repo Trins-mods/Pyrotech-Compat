@@ -13,10 +13,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import trinsdar.pyrotech_compat.BlockInitializer;
-import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneous;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockMetamorphic;
-import trinsdar.pyrotech_compat.block.rocks.BlockRockMetamorphicSand;
 
 import javax.annotation.Nonnull;
 

@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.item.Item;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -14,7 +13,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import trinsdar.pyrotech_compat.BlockInitializer;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneous;
 
 import javax.annotation.Nonnull;

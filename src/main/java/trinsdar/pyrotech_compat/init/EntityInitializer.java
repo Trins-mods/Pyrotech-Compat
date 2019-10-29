@@ -1,4 +1,4 @@
-package trinsdar.pyrotech_compat;
+package trinsdar.pyrotech_compat.init;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderItem;
@@ -15,6 +15,7 @@ import trinsdar.pyrotech_compat.entity.EntityRockMetamorphic;
 import trinsdar.pyrotech_compat.entity.EntityRockMetamorphicSand;
 import trinsdar.pyrotech_compat.entity.EntityRockSedimentary;
 import trinsdar.pyrotech_compat.entity.EntityRockSedimentarySand;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
 
 import javax.annotation.Nonnull;
 

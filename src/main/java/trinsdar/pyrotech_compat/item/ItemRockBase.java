@@ -15,7 +15,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-import trinsdar.pyrotech_compat.BlockInitializer;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
 import trinsdar.pyrotech_compat.entity.EntityRockBase;
 
 import javax.annotation.Nonnull;

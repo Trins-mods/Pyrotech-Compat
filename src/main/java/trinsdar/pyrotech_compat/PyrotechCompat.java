@@ -3,6 +3,7 @@ package trinsdar.pyrotech_compat;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +14,10 @@ import trinsdar.pyrotech_compat.entity.EntityRockMetamorphic;
 import trinsdar.pyrotech_compat.entity.EntityRockMetamorphicSand;
 import trinsdar.pyrotech_compat.entity.EntityRockSedimentary;
 import trinsdar.pyrotech_compat.entity.EntityRockSedimentarySand;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
+import trinsdar.pyrotech_compat.init.EntityInitializer;
+import trinsdar.pyrotech_compat.init.OredictInitializer;
+import trinsdar.pyrotech_compat.init.RecipeInitializer;
 
 @Mod(modid = PyrotechCompat.MODID, name = PyrotechCompat.MODNAME, version = PyrotechCompat.VERSION, dependencies = PyrotechCompat.DEPENDS)
 public class PyrotechCompat {
@@ -44,5 +49,11 @@ public class PyrotechCompat {
             BlockInitializer.onClientRegister();
             EntityInitializer.onClientRegister();
         }
+        OredictInitializer.init();
+    }
+
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event){
+        RecipeInitializer.init();
     }
 }

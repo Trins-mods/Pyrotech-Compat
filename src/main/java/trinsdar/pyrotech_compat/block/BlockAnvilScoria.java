@@ -6,7 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
-import trinsdar.pyrotech_compat.BlockInitializer;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
 import trinsdar.pyrotech_compat.PyrotechCompat;
 import trinsdar.pyrotech_compat.tile.TileAnvilScoria;
 

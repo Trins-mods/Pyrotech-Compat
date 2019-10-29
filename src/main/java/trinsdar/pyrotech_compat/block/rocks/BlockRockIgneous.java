@@ -10,7 +10,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import trinsdar.pyrotech_compat.BlockInitializer;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
 
 import javax.annotation.Nonnull;
 import java.util.Comparator;
