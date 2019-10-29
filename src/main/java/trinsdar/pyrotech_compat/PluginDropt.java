@@ -15,6 +15,7 @@ import com.codetaylor.mc.pyrotech.modules.tool.item.ItemCrudePickaxe;
 import net.minecraft.block.BlockSand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -30,6 +31,7 @@ import static com.codetaylor.mc.dropt.api.DroptAPI.registerRuleList;
 import static com.codetaylor.mc.dropt.api.DroptAPI.rule;
 import static com.codetaylor.mc.dropt.api.DroptAPI.weight;
 
+@Mod.EventBusSubscriber
 public class PluginDropt {
 
     private static String item(String modId, String name) {
@@ -448,6 +450,7 @@ public class PluginDropt {
 
             // Not a shovel
             list.add(rule()
+                    .debug()
                     .matchBlocks(listClay)
                     .matchHarvester(harvester()
                             .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
@@ -459,6 +462,7 @@ public class PluginDropt {
 
             // Shovel 0
             list.add(rule()
+                    .debug()
                     .matchBlocks(listClay)
                     .matchHarvester(harvester()
                             .type(EnumHarvesterType.PLAYER)
@@ -473,6 +477,7 @@ public class PluginDropt {
 
             // Shovel 1
             list.add(rule()
+                    .debug()
                     .matchBlocks(listClay)
                     .matchHarvester(harvester()
                             .type(EnumHarvesterType.PLAYER)
@@ -530,7 +535,7 @@ public class PluginDropt {
             this.addRockDrops(matchBlock, rock, list);
         }*/
 
-        ResourceLocation resourceLocation = new ResourceLocation(ModulePluginDropt.MOD_ID, "dropt");
+        ResourceLocation resourceLocation = new ResourceLocation(PyrotechCompat.MODID, "rock");
         registerRuleList(resourceLocation, 0, list);
     }
 
