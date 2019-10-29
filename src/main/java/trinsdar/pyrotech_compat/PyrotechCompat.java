@@ -26,7 +26,7 @@ public class PyrotechCompat {
     public static Logger logger;
 
     public PyrotechCompat() {
-
+        MinecraftForge.EVENT_BUS.register(new PluginDropt());
     }
 
     @Mod.EventHandler
@@ -46,16 +46,6 @@ public class PyrotechCompat {
             BlockInitializer.onClientRegister();
             EntityInitializer.onClientRegister();
         }
-
-    }
-
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent event){
-        //MinecraftForge.EVENT_BUS.register(new PluginDropt());
-    }
-
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event){
 
     }
 }
