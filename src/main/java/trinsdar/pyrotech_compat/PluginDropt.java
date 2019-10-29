@@ -713,10 +713,10 @@ public class PluginDropt {
 
         if (enabled("cobblestone")) {
             for (int meta : metas){
-                String matchBlock = ubc("igneous", "cobblestone", meta);
+                String matchBlock = ubc("igneous", "cobble", meta);
                 String rock = rock("igneous", meta);
                 this.addRockDrops(matchBlock, rock, list);
-                matchBlock = ubc("metamorphic", "cobblestone", meta);
+                matchBlock = ubc("metamorphic", "cobble", meta);
                 rock = rock("metamorphic", meta);
                 this.addRockDrops(matchBlock, rock, list);
             }

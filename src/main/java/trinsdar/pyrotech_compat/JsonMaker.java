@@ -47,7 +47,7 @@ public class JsonMaker {
                 writer.endObject();
                 writer.name("result");
                 writer.beginObject();
-                    writer.name("item").value("undergroundbiome:igneous_cobblestone");
+                    writer.name("item").value("undergroundbiomes:igneous_cobble");
                     writer.name("count").value(1);
                     writer.name("data").value(i);
                 writer.endObject();
@@ -81,7 +81,7 @@ public class JsonMaker {
                 writer.endObject();
                 writer.name("result");
                 writer.beginObject();
-                    writer.name("item").value("undergroundbiome:metamorphic_cobblestone");
+                    writer.name("item").value("undergroundbiomes:metamorphic_cobble");
                     writer.name("count").value(1);
                     writer.name("data").value(i);
                 writer.endObject();
@@ -126,7 +126,7 @@ public class JsonMaker {
                 writer.endObject();
                 writer.name("result");
                 writer.beginObject();
-                    writer.name("item").value("undergroundbiome:sedimentary_stone");
+                    writer.name("item").value("undergroundbiomes:sedimentary_stone");
                     writer.name("count").value(1);
                     writer.name("data").value(i);
                 writer.endObject();

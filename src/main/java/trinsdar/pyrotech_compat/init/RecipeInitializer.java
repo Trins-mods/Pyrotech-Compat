@@ -27,14 +27,14 @@ public class RecipeInitializer {
                             new ItemStack(BlockInitializer.itemRockIgneous, 1, i)
                     ),
                     8
-            ).setRegistryName(PyrotechCompat.MODID, "igneous_gravel:" + BlockRockIgneous.EnumType.fromMeta(i).getName().replace("rock_", "")));
+            ).setRegistryName(PyrotechCompat.MODID, "igneous_gravel_" + BlockRockIgneous.EnumType.fromMeta(i).getName().replace("rock_", "")));
             registry.register(new CompactingBinRecipe(
                     getUBCGravel("metamorphic", i),
                     Ingredient.fromStacks(
                             new ItemStack(BlockInitializer.itemRockMetamorphic, 1, i)
                     ),
                     8
-            ).setRegistryName(PyrotechCompat.MODID, "metamorphic_gravel:" + BlockRockMetamorphic.EnumType.fromMeta(i).getName().replace("rock_", "")));
+            ).setRegistryName(PyrotechCompat.MODID, "metamorphic_gravel_" + BlockRockMetamorphic.EnumType.fromMeta(i).getName().replace("rock_", "")));
             if (i == 0){
                 registry.register(new CompactingBinRecipe(
                         getUBCGravel("sedimentary", i),
@@ -42,7 +42,7 @@ public class RecipeInitializer {
                                 new ItemStack(ModuleCore.Blocks.ROCK, 1, BlockRock.EnumType.LIMESTONE.getMeta())
                         ),
                         8
-                ).setRegistryName(PyrotechCompat.MODID, "sedimentary_gravel:limestone"));
+                ).setRegistryName(PyrotechCompat.MODID, "sedimentary_gravel_limestone"));
             } else if (i < 4){
                 registry.register(new CompactingBinRecipe(
                         getUBCGravel("sedimentary", i),
@@ -50,7 +50,7 @@ public class RecipeInitializer {
                                 new ItemStack(BlockInitializer.itemRockSedimentary, 1, i - 1)
                         ),
                         8
-                ).setRegistryName(PyrotechCompat.MODID, "sedimentary_gravel:" + BlockRockSedimentary.EnumType.fromMeta(i - 1).getName().replace("rock_", "")));
+                ).setRegistryName(PyrotechCompat.MODID, "sedimentary_gravel_" + BlockRockSedimentary.EnumType.fromMeta(i - 1).getName().replace("rock_", "")));
             } else if (i == 4){
                 continue;
             } else {
@@ -60,7 +60,7 @@ public class RecipeInitializer {
                                 new ItemStack(BlockInitializer.itemRockSedimentary, 1, i - 2)
                         ),
                         8
-                ).setRegistryName(PyrotechCompat.MODID, "sedimentary_gravel:" + BlockRockSedimentary.EnumType.fromMeta(i - 2).getName().replace("rock_", "")));
+                ).setRegistryName(PyrotechCompat.MODID, "sedimentary_gravel_" + BlockRockSedimentary.EnumType.fromMeta(i - 2).getName().replace("rock_", "")));
             }
         }
     }
