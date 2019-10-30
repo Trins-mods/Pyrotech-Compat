@@ -285,7 +285,7 @@ public class RecipeInitializer {
                         ),
                         8,
                         "sedimentary_gravel_" + BlockRockSedimentary.EnumType.fromMeta(i - 1).getName().replace("rock_", "")
-                ).setRegistryName(PyrotechCompat.MODID, "sedimentary_gravel_" + BlockRockSedimentary.EnumType.fromMeta(i - 1).getName().replace("rock_", "")));
+                ));
             } else if (i == 4){
                 continue;
             } else {
