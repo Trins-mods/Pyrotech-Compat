@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LL",
+    "LL"
+  ],
+  "key": {
+    "L": {
+      "item": "pyrotech:limestone"
+    }
+  },
+  "result": {
+    "item": "undergroundbiomes:sedimentary_stone",
+    "count": 4,
+    "data": 3
+  }
+}

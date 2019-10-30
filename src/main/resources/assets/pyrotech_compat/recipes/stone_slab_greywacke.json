@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRR",
+    "RCR"
+  ],
+  "key": {
+    "C": {
+      "item": "pyrotech:material",
+      "data": 17
+    },
+    "R": {
+      "item": "pyrotech_compat:rock_sedimentary",
+      "data": 4
+    }
+  },
+  "result": {
+    "item": "undergroundbiomes:sedimentary_stone_halfslab",
+    "count": 1,
+    "data": 6
+  }
+}

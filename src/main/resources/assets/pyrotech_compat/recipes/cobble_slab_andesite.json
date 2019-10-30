@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRR",
+    "RCR"
+  ],
+  "key": {
+    "C": {
+      "item": "pyrotech:material",
+      "data": 17
+    },
+    "R": {
+      "item": "pyrotech_compat:rock_igneous",
+      "data": 3
+    }
+  },
+  "result": {
+    "item": "undergroundbiomes:igneous_cobble_halfslab",
+    "count": 1,
+    "data": 3
+  }
+}
