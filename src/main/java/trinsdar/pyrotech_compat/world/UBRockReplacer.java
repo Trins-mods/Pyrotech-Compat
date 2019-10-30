@@ -1,6 +1,7 @@
 package trinsdar.pyrotech_compat.world;
 
 import com.codetaylor.mc.pyrotech.modules.core.ModuleCore;
+import com.codetaylor.mc.pyrotech.modules.core.block.BlockRock;
 import exterminatorjeff.undergroundbiomes.api.API;
 import exterminatorjeff.undergroundbiomes.api.UBBiome;
 import exterminatorjeff.undergroundbiomes.api.UBStrataColumn;
@@ -25,6 +26,9 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraftforge.fml.common.Loader;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockBase;
+import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneous;
+import trinsdar.pyrotech_compat.block.rocks.BlockRockMetamorphic;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
 
 public class UBRockReplacer implements UBStrataColumnProvider {
     private GenLayer undergroundBiomeIndexLayer;
@@ -75,19 +79,18 @@ public class UBRockReplacer implements UBStrataColumnProvider {
                             if (currentBlock instanceof BlockRockBase)
                                 continue;
                             /*
-                             * Stone
+                             * Stone Rocks
                              */
-                            if (currentBlock == Blocks.STONE) {
+                            if (currentBlock == ModuleCore.Blocks.ROCK) {
                                 // Replace with UBified version
-                                storage.set(x, y, z, currentBiome.getStrataBlockAtLayer(yPos + y + variation));
-                            } else if (currentBlock == ModuleCore.Blocks.ROCK && API.SETTINGS.replaceCobblestone()) {
-                                // Replace with UBified version
-                                IBlockState strata = currentBiome.getStrataBlockAtLayer(yPos + y + variation);
+                                IBlockState strata = currentBiome.getStrataBlockAtLayer(yPos + y);
                                 if (strata.getBlock() instanceof UBStone) {
                                     UBStone block = (UBStone) strata.getBlock();
-                                    storage.set(x, y, z,
-                                            (StonesRegistry.INSTANCE.stoneFor(block.getStoneType(), UBStoneStyle.COBBLE).getBlock())
-                                                    .getStateFromMeta(block.getMetaFromState(strata)));
+                                    IBlockState replaceBlock = stoneFor(block.getStoneType(), block.getMetaFromState(strata));
+                                    if (replaceBlock != null){
+                                        storage.set(x, y, z, replaceBlock);
+                                    }
+
                                 }
                                 continue;
                             }
@@ -97,6 +100,26 @@ public class UBRockReplacer implements UBStrataColumnProvider {
             }
         }
         // TimeTracker.manager.stop("overall");
+    }
+
+    private IBlockState stoneFor(UBStoneType type, int meta){
+        switch(type) {
+            case IGNEOUS:
+                return BlockInitializer.blockRockIgneous.getDefaultState().withProperty(BlockRockIgneous.VARIANT, BlockRockIgneous.EnumType.fromMeta(meta));
+            case METAMORPHIC:
+                return BlockInitializer.blockRockMetamorphic.getDefaultState().withProperty(BlockRockMetamorphic.VARIANT, BlockRockMetamorphic.EnumType.fromMeta(meta));
+            case SEDIMENTARY:
+                if (meta == 0){
+                    return ModuleCore.Blocks.ROCK.getDefaultState().withProperty(BlockRock.VARIANT, BlockRock.EnumType.LIMESTONE);
+                } else if (meta < 4){
+                    return BlockInitializer.blockRockIgneous.getDefaultState().withProperty(BlockRockIgneous.VARIANT, BlockRockIgneous.EnumType.fromMeta(meta - 1));
+                } else if (meta == 4){
+                    return null;
+                } else {
+                    return BlockInitializer.blockRockIgneous.getDefaultState().withProperty(BlockRockIgneous.VARIANT, BlockRockIgneous.EnumType.fromMeta(meta - 2));
+                }
+        }
+        return null;
     }
 
     public int[] getBiomeValues(Chunk chunk){

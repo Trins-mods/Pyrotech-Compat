@@ -14,15 +14,15 @@ import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.logging.log4j.Level;
 
-import java.util.logging.Level;
 
 public class WorldGenManager {
     private final UBLogger LOGGER;
 
     private final int dimensionID;
     private final UndergroundBiomeSet biomesSet;
-    private UBStoneReplacer stoneReplacer;
+    private UBRockReplacer stoneReplacer;
 
     private boolean worldLoaded = false;
     private World world;
@@ -30,7 +30,7 @@ public class WorldGenManager {
 
     public WorldGenManager(int dimensionID) {
         LOGGER = new UBLogger(WorldGenManager.class + " " + dimensionID, Level.INFO);
-        LOGGER.debug("Dimension " + dimensionID + " will be UBified");
+        LOGGER.debug("Dimension " + dimensionID + " will be UBified for rocks.");
 
         this.dimensionID = dimensionID;
         biomesSet = new UBBiomesSet(UBConfig.SPECIFIC);
@@ -51,14 +51,14 @@ public class WorldGenManager {
             seed = (int) world.getSeed();
             if (UBConfig.SPECIFIC.dimensionSpecificSeeds())
                 seed += dimensionID;
-            this.stoneReplacer = new TraditionalStoneReplacer(seed, UBConfig.SPECIFIC.biomeSize(), biomesSet);
+            this.stoneReplacer = new UBRockReplacer(seed, UBConfig.SPECIFIC.biomeSize(), biomesSet);
         }
     }
 
 
-    private UBBiome blockBiomeValue(int xPos, int zPos) {
-        return stoneReplacer.UBBiomeAt(xPos, zPos);
-    }
+//    private UBBiome blockBiomeValue(int xPos, int zPos) {
+//        return stoneReplacer.UBBiomeAt(xPos, zPos);
+//    }
 
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -66,7 +66,6 @@ public class WorldGenManager {
         if (event.getWorld().provider.getDimension() == dimensionID && worldLoaded) {
             Chunk chunk = event.getWorld().getChunkFromChunkCoords(event.getChunkX(), event.getChunkZ());
             this.stoneReplacer.replaceStoneInChunk(chunk);
-            stoneReplacer.redoOres(event.getWorld());
         }
     }
 }
