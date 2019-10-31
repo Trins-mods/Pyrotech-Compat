@@ -1,6 +1,5 @@
 package trinsdar.pyrotech_compat;
 
-import com.codetaylor.mc.pyrotech.modules.plugin.dropt.ModulePluginDroptConfig;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -8,7 +7,9 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +24,7 @@ import trinsdar.pyrotech_compat.init.BlockInitializer;
 import trinsdar.pyrotech_compat.init.EntityInitializer;
 import trinsdar.pyrotech_compat.init.OredictInitializer;
 import trinsdar.pyrotech_compat.init.RecipeInitializer;
+import trinsdar.pyrotech_compat.init.UBCWorldgenInit;
 
 @Mod(modid = PyrotechCompat.MODID, name = PyrotechCompat.MODNAME, version = PyrotechCompat.VERSION, dependencies = PyrotechCompat.DEPENDS)
 public class PyrotechCompat {
@@ -33,6 +35,8 @@ public class PyrotechCompat {
 
     public static Logger logger;
 
+    public static UBCWorldgenInit worldGen;
+
     public PyrotechCompat() {
         MinecraftForge.EVENT_BUS.register(new PluginDropt());
         MinecraftForge.EVENT_BUS.register(this);
@@ -42,6 +46,8 @@ public class PyrotechCompat {
     public void preInit(FMLPreInitializationEvent event){
         JsonMaker.init(event);
         logger = event.getModLog();
+        worldGen = new UBCWorldgenInit();
+        worldGen.preInit(event);
         BlockInitializer.onRegister();
         int entityId = 1;
         EntityRegistry.registerModEntity(new ResourceLocation(PyrotechCompat.MODID, EntityRockBase.NAME), EntityRockBase.class, "RockPC", entityId++, this, 80, 1, true);
@@ -60,10 +66,20 @@ public class PyrotechCompat {
         OredictInitializer.init();
     }
 
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event){
+        worldGen.postInit(event);
+    }
+
     @SubscribeEvent
     public void onRegisterRecipesEvent(RegistryEvent.Register<IRecipe> event){
         if (Loader.isModLoaded("undergroundbiomes")){
             RecipeInitializer.init();
         }
+    }
+
+    @Mod.EventHandler
+    public void serverStopped(FMLServerStoppedEvent event){
+        worldGen.onServerStopped(event);
     }
 }

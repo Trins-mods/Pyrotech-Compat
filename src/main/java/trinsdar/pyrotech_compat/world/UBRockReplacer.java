@@ -42,7 +42,6 @@ public class UBRockReplacer implements UBStrataColumnProvider {
 
     @SuppressWarnings("deprecation")
     public void replaceStoneInChunk(Chunk chunk)  {
-        boolean quarkpresent = Loader.isModLoaded("quark");
         int[] biomeValues = getBiomeValues(chunk);
         int xPos = chunk.getPos().x * 16;
         int zPos = chunk.getPos().z * 16;

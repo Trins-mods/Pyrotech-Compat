@@ -11,6 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import trinsdar.pyrotech_compat.PyrotechCompat;
 
 import java.io.File;
 import java.util.HashMap;
@@ -51,7 +52,7 @@ public class DimensionManager {
     @SuppressWarnings("unused")
     public void serverLoad(MinecraftServer server) {
         if (server == null) return;
-        //logger.info("server starting");
+        PyrotechCompat.logger.info("server starting via server");
         File worldSaveDirectory = null;
         String worldName = server.getFolderName();
         if (server.isSinglePlayer()) {
@@ -71,6 +72,10 @@ public class DimensionManager {
             throw e;
         }
         refreshManagers();
+    }
+
+    public void clearWorldManagers() {
+        managers.clear();
     }
 
     @SubscribeEvent
