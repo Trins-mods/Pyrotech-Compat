@@ -31,7 +31,7 @@ public class PyrotechCompat {
     public static final String MODID = "pyrotech_compat";
     public static final String MODNAME = "Pyrotech Compat";
     public static final String VERSION = "@VERSION@";
-    public static final String DEPENDS = "required-after:pyrotech;after:primal;after:undergroundbiomes";
+    public static final String DEPENDS = "required-after:pyrotech@[1.4,);after:primal;after:undergroundbiomes";
 
     public static Logger logger;
 
