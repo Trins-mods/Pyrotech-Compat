@@ -158,139 +158,143 @@ public class PluginDropt {
             // -------------------------------------------------------------------------
 
             if (enabled("sand")) {
+                if (enabled("igneous_sand")){
+                    for (int meta : metas){
+                        // Not a shovel
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("igneous", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("igneous_sand", meta)}, range(1, 3))
+                                })
+                        );
 
-                for (int meta : metas){
-                    // Not a shovel
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("igneous", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("igneous_sand", meta)}, range(1, 3))
-                            })
-                    );
+                        // Shovel 0
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("igneous", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("igneous_sand", meta)}, range(2, 4))
+                                })
+                        );
 
-                    // Shovel 0
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("igneous", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("igneous_sand", meta)}, range(2, 4))
-                            })
-                    );
-
-                    // Shovel 1
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("igneous", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("igneous_sand", meta)}, range(3, 6)).selector(weight(4)),
-                                    drop().items(new String[]{ubc("igneous", "sand", meta)})
-                            })
-                    );
+                        // Shovel 1
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("igneous", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("igneous_sand", meta)}, range(3, 6)).selector(weight(4)),
+                                        drop().items(new String[]{ubc("igneous", "sand", meta)})
+                                })
+                        );
+                    }
                 }
 
-                for (int meta : metas){
-                    // Not a shovel
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("metamorphic", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("metamorphic_sand", meta)}, range(1, 3))
-                            })
-                    );
+                if (enabled("metamorphic_sand")){
+                    for (int meta : metas){
+                        // Not a shovel
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("metamorphic", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("metamorphic_sand", meta)}, range(1, 3))
+                                })
+                        );
 
-                    // Shovel 0
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("metamorphic", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("metamorphic_sand", meta)}, range(2, 4))
-                            })
-                    );
+                        // Shovel 0
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("metamorphic", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("metamorphic_sand", meta)}, range(2, 4))
+                                })
+                        );
 
-                    // Shovel 1
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("metamorphic", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("metamorphic_sand", meta)}, range(3, 6)).selector(weight(4)),
-                                    drop().items(new String[]{ubc("metamorphic", "sand", meta)})
-                            })
-                    );
+                        // Shovel 1
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("metamorphic", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("metamorphic_sand", meta)}, range(3, 6)).selector(weight(4)),
+                                        drop().items(new String[]{ubc("metamorphic", "sand", meta)})
+                                })
+                        );
+                    }
                 }
 
-                for (int meta : metas){
-                    // Not a shovel
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("sedimentary", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("sedimentary_sand", meta)}, range(1, 3))
-                            })
-                    );
+                if (enabled("sedimentary_sand")){
+                    for (int meta : metas){
+                        // Not a shovel
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("sedimentary", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("sedimentary_sand", meta)}, range(1, 3))
+                                })
+                        );
 
-                    // Shovel 0
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("sedimentary", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("sedimentary_sand", meta)}, range(2, 4))
-                            })
-                    );
+                        // Shovel 0
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("sedimentary", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("sedimentary_sand", meta)}, range(2, 4))
+                                })
+                        );
 
-                    // Shovel 1
-                    list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("sedimentary", "sand", meta)
-                            })
-                            .matchHarvester(harvester()
-                                    .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
-                            )
-                            .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rock("sedimentary_sand", meta)}, range(3, 6)).selector(weight(4)),
-                                    drop().items(new String[]{ubc("sedimentary", "sand", meta)})
-                            })
-                    );
+                        // Shovel 1
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("sedimentary", "sand", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                )
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rock("sedimentary_sand", meta)}, range(3, 6)).selector(weight(4)),
+                                        drop().items(new String[]{ubc("sedimentary", "sand", meta)})
+                                })
+                        );
+                    }
                 }
-
             }
 
             // -------------------------------------------------------------------------
@@ -299,224 +303,230 @@ public class PluginDropt {
 
             if (enabled("gravel")) {
 
-                // Not a shovel
-                list.add(rule()
-                        .matchBlocks(listIgneous)
-                        .matchHarvester(harvester()
-                                .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
-                        )
-                        .addDrops(new IDroptDropBuilder[]{
-                                drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("igneous", 2)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("igneous", 3)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("igneous", 4)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("igneous", 5)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("igneous", 6)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("igneous", 7)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(10))
-                        })
-                );
-
-                // Shovel 0
-                list.add(rule()
-                        .matchBlocks(listIgneous)
-                        .matchHarvester(harvester()
-                                .type(EnumHarvesterType.PLAYER)
-                                .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
-                        )
-                        .dropCount(range(2))
-                        .dropStrategy(EnumDropStrategy.UNIQUE)
-                        .addDrops(new IDroptDropBuilder[]{
-                                drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
-                                drop().items(new String[]{rockGranite}, range(1, 2)).selector(weight(2)),
-                                drop().items(new String[]{rockAndesite}, range(1, 2)).selector(weight(2)),
-                                drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("igneous", 2)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("igneous", 3)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("igneous", 4)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("igneous", 5)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("igneous", 6)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("igneous", 7)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{flintShard}).selector(weight(1))
-                        })
-                );
-
-                // Shovel 1
-                for (int meta : metas){
+                if (enabled("igneous_gravel")){
+                    // Not a shovel
                     list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("igneous", "gravel", meta)
+                            .matchBlocks(listIgneous)
+                            .matchHarvester(harvester()
+                                    .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
+                            )
+                            .addDrops(new IDroptDropBuilder[]{
+                                    drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("igneous", 2)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("igneous", 3)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("igneous", 4)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("igneous", 5)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("igneous", 6)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("igneous", 7)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(10))
                             })
+                    );
+
+                    // Shovel 0
+                    list.add(rule()
+                            .matchBlocks(listIgneous)
                             .matchHarvester(harvester()
                                     .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                    .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
                             )
                             .dropCount(range(2))
                             .dropStrategy(EnumDropStrategy.UNIQUE)
                             .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("igneous", 2)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("igneous", 3)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("igneous", 4)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("igneous", 5)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("igneous", 6)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("igneous", 7)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{ubc("igneous", "gravel", meta)}).selector(weight(2)),
-                                    drop().items(new String[]{flintShard}).selector(weight(2)),
-                                    drop().items(new String[]{flint}).selector(weight(1))
+                                    drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
+                                    drop().items(new String[]{rockGranite}, range(1, 2)).selector(weight(2)),
+                                    drop().items(new String[]{rockAndesite}, range(1, 2)).selector(weight(2)),
+                                    drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("igneous", 2)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("igneous", 3)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("igneous", 4)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("igneous", 5)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("igneous", 6)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("igneous", 7)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{flintShard}).selector(weight(1))
                             })
                     );
+
+                    // Shovel 1
+                    for (int meta : metas){
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("igneous", "gravel", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                )
+                                .dropCount(range(2))
+                                .dropStrategy(EnumDropStrategy.UNIQUE)
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rockGranite}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("igneous", 0)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("igneous", 1)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("igneous", 2)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("igneous", 3)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("igneous", 4)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("igneous", 5)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("igneous", 6)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("igneous", 7)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{ubc("igneous", "gravel", meta)}).selector(weight(2)),
+                                        drop().items(new String[]{flintShard}).selector(weight(2)),
+                                        drop().items(new String[]{flint}).selector(weight(1))
+                                })
+                        );
+                    }
                 }
 
-                // Not a shovel
-                list.add(rule()
-                        .matchBlocks(listMetamorphic)
-                        .matchHarvester(harvester()
-                                .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
-                        )
-                        .addDrops(new IDroptDropBuilder[]{
-                                drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("metamorphic", 2)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("metamorphic", 3)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("metamorphic", 4)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("metamorphic", 5)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("metamorphic", 6)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("metamorphic", 7)}, range(1, 3)).selector(weight(10))
-                        })
-                );
-
-                // Shovel 0
-                list.add(rule()
-                        .matchBlocks(listMetamorphic)
-                        .matchHarvester(harvester()
-                                .type(EnumHarvesterType.PLAYER)
-                                .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
-                        )
-                        .dropCount(range(2))
-                        .dropStrategy(EnumDropStrategy.UNIQUE)
-                        .addDrops(new IDroptDropBuilder[]{
-                                drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
-                                drop().items(new String[]{rockDiorite}, range(1, 2)).selector(weight(2)),
-                                drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("metamorphic", 2)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("metamorphic", 3)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("metamorphic", 4)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("metamorphic", 5)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("metamorphic", 6)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("metamorphic", 7)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{flintShard}).selector(weight(1))
-                        })
-                );
-
-                // Shovel 1
-                for (int meta : metas){
+                if (enabled("metamorphic_gravel")){
+                    // Not a shovel
                     list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("metamorphic", "gravel", meta)
+                            .matchBlocks(listMetamorphic)
+                            .matchHarvester(harvester()
+                                    .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
+                            )
+                            .addDrops(new IDroptDropBuilder[]{
+                                    drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("metamorphic", 2)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("metamorphic", 3)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("metamorphic", 4)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("metamorphic", 5)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("metamorphic", 6)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("metamorphic", 7)}, range(1, 3)).selector(weight(10))
                             })
+                    );
+
+                    // Shovel 0
+                    list.add(rule()
+                            .matchBlocks(listMetamorphic)
                             .matchHarvester(harvester()
                                     .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                    .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
                             )
                             .dropCount(range(2))
                             .dropStrategy(EnumDropStrategy.UNIQUE)
                             .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("metamorphic", 2)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("metamorphic", 3)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("metamorphic", 4)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("metamorphic", 5)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("metamorphic", 6)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("metamorphic", 7)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{ubc("metamorphic", "gravel", meta)}).selector(weight(2)),
-                                    drop().items(new String[]{flintShard}).selector(weight(2)),
-                                    drop().items(new String[]{flint}).selector(weight(1))
+                                    drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
+                                    drop().items(new String[]{rockDiorite}, range(1, 2)).selector(weight(2)),
+                                    drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("metamorphic", 2)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("metamorphic", 3)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("metamorphic", 4)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("metamorphic", 5)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("metamorphic", 6)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("metamorphic", 7)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{flintShard}).selector(weight(1))
                             })
                     );
+
+                    // Shovel 1
+                    for (int meta : metas){
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("metamorphic", "gravel", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                )
+                                .dropCount(range(2))
+                                .dropStrategy(EnumDropStrategy.UNIQUE)
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rockDiorite}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("metamorphic", 0)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("metamorphic", 1)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("metamorphic", 2)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("metamorphic", 3)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("metamorphic", 4)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("metamorphic", 5)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("metamorphic", 6)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("metamorphic", 7)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{ubc("metamorphic", "gravel", meta)}).selector(weight(2)),
+                                        drop().items(new String[]{flintShard}).selector(weight(2)),
+                                        drop().items(new String[]{flint}).selector(weight(1))
+                                })
+                        );
+                    }
                 }
 
-                // Not a shovel
-                list.add(rule()
-                        .matchBlocks(listSedimentary)
-                        .matchHarvester(harvester()
-                                .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
-                        )
-                        .addDrops(new IDroptDropBuilder[]{
-                                drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("sedimentary", 3)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("sedimentary", 4)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rock("sedimentary", 5)}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rockLimestone}, range(1, 3)).selector(weight(10)),
-                                drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(10))
-                        })
-                );
-
-                // Shovel 0
-                list.add(rule()
-                        .matchBlocks(listSedimentary)
-                        .matchHarvester(harvester()
-                                .type(EnumHarvesterType.PLAYER)
-                                .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
-                        )
-                        .dropCount(range(2))
-                        .dropStrategy(EnumDropStrategy.UNIQUE)
-                        .addDrops(new IDroptDropBuilder[]{
-                                drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
-                                drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("sedimentary", 3)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("sedimentary", 4)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rock("sedimentary", 5)}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{rockLimestone}, range(1, 3)).selector(weight(2)),
-                                drop().items(new String[]{flintShard}).selector(weight(1))
-                        })
-                );
-
-                // Shovel 1
-                for (int meta : metas){
+                if (enabled("sedimentary_gravel")){
+                    // Not a shovel
                     list.add(rule()
-                            .matchBlocks(new String[]{
-                                    ubc("sedimentary", "gravel", meta)
+                            .matchBlocks(listSedimentary)
+                            .matchHarvester(harvester()
+                                    .mainHand(EnumListType.BLACKLIST, "shovel;0;-1")
+                            )
+                            .addDrops(new IDroptDropBuilder[]{
+                                    drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("sedimentary", 3)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("sedimentary", 4)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rock("sedimentary", 5)}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rockLimestone}, range(1, 3)).selector(weight(10)),
+                                    drop().items(new String[]{rockAndesite}, range(1, 3)).selector(weight(10))
                             })
+                    );
+
+                    // Shovel 0
+                    list.add(rule()
+                            .matchBlocks(listSedimentary)
                             .matchHarvester(harvester()
                                     .type(EnumHarvesterType.PLAYER)
-                                    .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                    .mainHand(EnumListType.BLACKLIST, "shovel;1;-1")
                             )
                             .dropCount(range(2))
                             .dropStrategy(EnumDropStrategy.UNIQUE)
                             .addDrops(new IDroptDropBuilder[]{
-                                    drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("sedimentary", 3)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("sedimentary", 4)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rock("sedimentary", 5)}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{rockLimestone}, range(1, 3)).selector(weight(1)),
-                                    drop().items(new String[]{ubc("sedimentary", "gravel", meta)}).selector(weight(2)),
-                                    drop().items(new String[]{flintShard}).selector(weight(2)),
-                                    drop().items(new String[]{flint}).selector(weight(1))
+                                    drop().items(new String[]{rockStone}, range(1, 2)).selector(weight(2)),
+                                    drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("sedimentary", 3)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("sedimentary", 4)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rock("sedimentary", 5)}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{rockLimestone}, range(1, 3)).selector(weight(2)),
+                                    drop().items(new String[]{flintShard}).selector(weight(1))
                             })
                     );
+
+                    // Shovel 1
+                    for (int meta : metas){
+                        list.add(rule()
+                                .matchBlocks(new String[]{
+                                        ubc("sedimentary", "gravel", meta)
+                                })
+                                .matchHarvester(harvester()
+                                        .type(EnumHarvesterType.PLAYER)
+                                        .mainHand(EnumListType.BLACKLIST, "shovel;2;-1")
+                                )
+                                .dropCount(range(2))
+                                .dropStrategy(EnumDropStrategy.UNIQUE)
+                                .addDrops(new IDroptDropBuilder[]{
+                                        drop().items(new String[]{rockStone}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("sedimentary", 0)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("sedimentary", 1)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("sedimentary", 2)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("sedimentary", 3)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("sedimentary", 4)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rock("sedimentary", 5)}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{rockLimestone}, range(1, 3)).selector(weight(1)),
+                                        drop().items(new String[]{ubc("sedimentary", "gravel", meta)}).selector(weight(2)),
+                                        drop().items(new String[]{flintShard}).selector(weight(2)),
+                                        drop().items(new String[]{flint}).selector(weight(1))
+                                })
+                        );
+                    }
                 }
             }
 
@@ -524,7 +534,9 @@ public class PluginDropt {
             // - Clay
             // -------------------------------------------------------------------------
 
-            if (enabled("clay")) {
+
+
+            if (enabled("clay") && enabled("ubc_clay")) {
 
                 // Not a shovel
                 list.add(rule()
@@ -579,13 +591,19 @@ public class PluginDropt {
                 for (int meta : metas){
                     String matchBlock = ubc("igneous", "sandstone", meta);
                     String rock = rock("igneous_sand", meta + 8);
-                    this.addRockDrops(matchBlock, rock, list);
+                    if (enabled("igneous_sandstone")){
+                        this.addRockDrops(matchBlock, rock, list);
+                    }
                     matchBlock = ubc("metamorphic", "sandstone", meta);
                     rock = rock("metamorphic_sand", meta + 8);
-                    this.addRockDrops(matchBlock, rock, list);
+                    if (enabled("metamorphic_sandstone")){
+                        this.addRockDrops(matchBlock, rock, list);
+                    }
                     matchBlock = ubc("sedimentary", "sandstone", meta);
                     rock = rock("sedimentary_sand", meta + 8);
-                    this.addRockDrops(matchBlock, rock, list);
+                    if (enabled("sedimentary_sandstone")){
+                        this.addRockDrops(matchBlock, rock, list);
+                    }
                 }
             }
 
@@ -597,23 +615,36 @@ public class PluginDropt {
                 for (int meta : metas){
                     String matchBlock = ubc("igneous", "stone", meta);
                     String rock = rock("igneous", meta);
-                    this.addRockDrops(matchBlock, rock, list);
-                    matchBlock = ubc("metamorphic", "stone", meta);
-                    rock = rock("metamorphic", meta);
-                    this.addRockDrops(matchBlock, rock, list);
-                    matchBlock = ubc("sedimentary", "stone", meta);
-                    if (meta == 0){
-                        rock = item(BlockRock.NAME, BlockRock.EnumType.LIMESTONE.getMeta());
-                        this.addRockDrops(matchBlock, rock, list);
-                    } else if (meta < 4){
-                        rock = rock("sedimentary", meta - 1);
-                        this.addRockDrops(matchBlock, rock, list);
-                    } else if (meta == 4){
-                        continue;
-                    } else{
-                        rock = rock("sedimentary", meta - 2);
+                    if (enabled("igneous_stone")){
                         this.addRockDrops(matchBlock, rock, list);
                     }
+                    matchBlock = ubc("metamorphic", "stone", meta);
+                    rock = rock("metamorphic", meta);
+                    if (enabled("metamorphic_stone")){
+                        this.addRockDrops(matchBlock, rock, list);
+                    }
+                    matchBlock = ubc("sedimentary", "stone", meta);
+                    if (enabled("sedimentary_stone")){
+                        if (meta == 4){
+                            continue;
+                        }
+                        if (meta == 0){
+                            rock = item(BlockRock.NAME, BlockRock.EnumType.LIMESTONE.getMeta());
+                            this.addRockDrops(matchBlock, rock, list);
+                        } else if (meta < 4){
+                            rock = rock("sedimentary", meta - 1);
+                            this.addRockDrops(matchBlock, rock, list);
+                        } else{
+                            rock = rock("sedimentary", meta - 2);
+                            this.addRockDrops(matchBlock, rock, list);
+                        }
+                    }
+
+
+
+
+
+
                 }
             }
 
@@ -621,10 +652,14 @@ public class PluginDropt {
                 for (int meta : metas){
                     String matchBlock = ubc("igneous", "cobble", meta);
                     String rock = rock("igneous", meta);
-                    this.addRockDrops(matchBlock, rock, list);
+                    if (enabled("igneous_cobblestone")){
+                        this.addRockDrops(matchBlock, rock, list);
+                    }
                     matchBlock = ubc("metamorphic", "cobble", meta);
                     rock = rock("metamorphic", meta);
-                    this.addRockDrops(matchBlock, rock, list);
+                    if (enabled("metamorphic_cobblestone")){
+                        this.addRockDrops(matchBlock, rock, list);
+                    }
                 }
             }
         }
