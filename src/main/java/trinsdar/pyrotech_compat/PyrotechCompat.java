@@ -35,7 +35,7 @@ public class PyrotechCompat {
 
     public static Logger logger;
 
-    public static UBCWorldgenInit worldGen;
+    //public static UBCWorldgenInit worldGen;
 
     public PyrotechCompat() {
         MinecraftForge.EVENT_BUS.register(new PluginDropt());
@@ -46,8 +46,8 @@ public class PyrotechCompat {
     public void preInit(FMLPreInitializationEvent event){
         JsonMaker.init(event);
         logger = event.getModLog();
-        worldGen = new UBCWorldgenInit();
-        worldGen.preInit(event);
+        //worldGen = new UBCWorldgenInit();
+        //worldGen.preInit(event);
         BlockInitializer.onRegister();
         int entityId = 1;
         EntityRegistry.registerModEntity(new ResourceLocation(PyrotechCompat.MODID, EntityRockBase.NAME), EntityRockBase.class, "RockPC", entityId++, this, 80, 1, true);
@@ -68,7 +68,7 @@ public class PyrotechCompat {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event){
-        worldGen.postInit(event);
+        //worldGen.postInit(event);
     }
 
     @SubscribeEvent
@@ -80,6 +80,6 @@ public class PyrotechCompat {
 
     @Mod.EventHandler
     public void serverStopped(FMLServerStoppedEvent event){
-        worldGen.onServerStopped(event);
+        //worldGen.onServerStopped(event);
     }
 }
