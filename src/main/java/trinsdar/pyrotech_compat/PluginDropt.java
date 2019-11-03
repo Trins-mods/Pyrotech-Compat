@@ -52,8 +52,10 @@ public class PluginDropt {
 
     private static boolean enabled(String key) {
 
-        return ModulePluginDroptConfig.ENABLED_RULES.containsKey(key)
-                && ModulePluginDroptConfig.ENABLED_RULES.get(key);
+        if (ModulePluginDroptConfig.ENABLED_RULES.containsKey(key)){
+            return ModulePluginDroptConfig.ENABLED_RULES.get(key);
+        }
+        return PyrotechPluginDroptConfig.ENABLED_RULES.containsKey(key) && PyrotechPluginDroptConfig.ENABLED_RULES.get(key);
     }
 
     private static String ubc(String prefix, String suffix, int meta){
