@@ -1,4 +1,6 @@
 tile.pyrotech_compat.anvil_scoria.name=Scoria Anvil
+tile.pyrotech_compat.anvil_andesite.name=Andesite Anvil
+tile.pyrotech_compat.anvil_diorite.name=Diorite Anvil
 tile.pyrotech_compat.rock_netherrack.name=Netherrack Rock
 
 tile.pyrotech_compat.rock_red_granite.name=Red Granite Rock
