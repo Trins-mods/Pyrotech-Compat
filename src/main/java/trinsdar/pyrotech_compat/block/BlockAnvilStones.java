@@ -6,17 +6,18 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
-import trinsdar.pyrotech_compat.init.BlockInitializer;
 import trinsdar.pyrotech_compat.PyrotechCompat;
+import trinsdar.pyrotech_compat.init.BlockInitializer;
+import trinsdar.pyrotech_compat.tile.TileAnvilAndesite;
+import trinsdar.pyrotech_compat.tile.TileAnvilDiorite;
 import trinsdar.pyrotech_compat.tile.TileAnvilScoria;
 
-public class BlockAnvilScoria extends BlockAnvilBase {
-    public static final String NAME = "anvil_scoria";
+public class BlockAnvilStones extends BlockAnvilBase {
 
-    public BlockAnvilScoria() {
+    public BlockAnvilStones(String name) {
         super(Material.ROCK);
-        this.setRegistryName(NAME);
-        this.setUnlocalizedName(PyrotechCompat.MODID + "." + NAME);
+        this.setRegistryName(name);
+        this.setUnlocalizedName(PyrotechCompat.MODID + "." + name);
         this.setCreativeTab(ModPyrotech.CREATIVE_TAB);
         this.setHardness(3.0F);
         this.setResistance(5.0F);
@@ -26,11 +27,17 @@ public class BlockAnvilScoria extends BlockAnvilBase {
 
     @Override
     protected Block getBlock() {
-        return BlockInitializer.blockAnvilScoria;
+        return this;
     }
 
     @Override
     protected TileEntity createTileEntity() {
+        if (this == BlockInitializer.blockAnvilAndesite){
+            return new TileAnvilAndesite();
+        }
+        if (this == BlockInitializer.blockAnvilDiorite){
+            return new TileAnvilDiorite();
+        }
         return new TileAnvilScoria();
     }
 }

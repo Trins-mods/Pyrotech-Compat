@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import trinsdar.pyrotech_compat.PyrotechCompat;
-import trinsdar.pyrotech_compat.block.BlockAnvilScoria;
+import trinsdar.pyrotech_compat.block.BlockAnvilStones;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockBase;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneous;
 import trinsdar.pyrotech_compat.block.rocks.BlockRockIgneousSand;
@@ -31,6 +31,8 @@ import trinsdar.pyrotech_compat.item.ItemRockMetamorphic;
 import trinsdar.pyrotech_compat.item.ItemRockMetamorphicSand;
 import trinsdar.pyrotech_compat.item.ItemRockSedimentary;
 import trinsdar.pyrotech_compat.item.ItemRockSedimentarySand;
+import trinsdar.pyrotech_compat.tile.TileAnvilAndesite;
+import trinsdar.pyrotech_compat.tile.TileAnvilDiorite;
 import trinsdar.pyrotech_compat.tile.TileAnvilScoria;
 
 import java.util.LinkedHashMap;
@@ -40,7 +42,9 @@ public class BlockInitializer {
 
     public static BlockInitializer instance = new BlockInitializer();
     static final Map<Item, Block> toRegister = new LinkedHashMap<>();
-    public static final BlockAnvilScoria blockAnvilScoria = new BlockAnvilScoria();
+    public static final BlockAnvilStones blockAnvilScoria = new BlockAnvilStones("anvil_scoria");
+    public static final BlockAnvilStones blockAnvilAndesite = new BlockAnvilStones("anvil_andesite");
+    public static final BlockAnvilStones blockAnvilDiorite = new BlockAnvilStones("anvil_diorite");
     public static final BlockRockIgneous blockRockIgneous = new BlockRockIgneous();
     public static final BlockRockIgneousSand blockRockIgneousSand = new BlockRockIgneousSand();
     public static final BlockRockMetamorphic blockRockMetamorphic = new BlockRockMetamorphic();
@@ -70,7 +74,11 @@ public class BlockInitializer {
             instance.registerBlock(blockRockMetamorphicSand, itemRockMetamorphicSand);
             instance.registerBlock(blockRockSedimentarySand, itemRockSedimentarySand);
         }
+        instance.registerBlock(blockAnvilAndesite, new BlockAnvilBase.ItemAnvil(blockAnvilAndesite));
+        instance.registerBlock(blockAnvilDiorite, new BlockAnvilBase.ItemAnvil(blockAnvilDiorite));
         instance.registerBlock(blockRockNetherrack, itemRockNetherrack);
+        GameRegistry.registerTileEntity(TileAnvilAndesite.class, new ResourceLocation(PyrotechCompat.MODID, "tile." + TileAnvilAndesite.class.getSimpleName()));
+        GameRegistry.registerTileEntity(TileAnvilDiorite.class, new ResourceLocation(PyrotechCompat.MODID, "tile." + TileAnvilDiorite.class.getSimpleName()));
 
     }
 
@@ -174,6 +182,16 @@ public class BlockInitializer {
                     BlockRockSedimentarySand.VARIANT
             );
         }
+        ModelRegistrationHelper.registerVariantBlockItemModels(
+                blockAnvilAndesite.getDefaultState(),
+                BlockAnvilBase.DAMAGE,
+                value -> value
+        );
+        ModelRegistrationHelper.registerVariantBlockItemModels(
+                blockAnvilDiorite.getDefaultState(),
+                BlockAnvilBase.DAMAGE,
+                value -> value
+        );
         ModelRegistrationHelper.registerItemModels(itemRockNetherrack);
     }
 }

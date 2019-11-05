@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "modules_enabled",
+      "include": ["module.tech.basic"]
+    }
+  ],
+  "pattern": [
+    "G",
+    "S"
+  ],
+  "key": {
+    "G": {
+      "item": "primal:scoria_stone",
+      "data": 1
+    },
+    "S": {
+      "item": "primal:slab_netherstone",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "pyrotech_compat:anvil_scoria",
+    "count": 1,
+    "data": 0
+  }
+}

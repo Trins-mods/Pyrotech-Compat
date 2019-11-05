@@ -1,0 +1,33 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "pyrotech:anvil",
+    "textures": {
+      "top": "blocks/stone_andesite_smooth",
+      "top_side": "blocks/stone_andesite_smooth",
+      "bottom_side": "blocks/stone_slab_side",
+      "bottom": "blocks/stone_slab_top",
+      "particle": "blocks/stone_andesite_smooth"
+    }
+  },
+  "variants": {
+    "damage": {
+      "0": {},
+      "1": {
+        "textures": {
+          "top": "pyrotech_compat:blocks/anvil_andesite_damaged_a"
+        }
+      },
+      "2": {
+        "textures": {
+          "top": "pyrotech_compat:blocks/anvil_andesite_damaged_b"
+        }
+      },
+      "3": {
+        "textures": {
+          "top": "pyrotech_compat:blocks/anvil_andesite_damaged_c"
+        }
+      }
+    }
+  }
+}

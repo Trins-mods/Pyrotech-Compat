@@ -5,8 +5,8 @@
     "textures": {
       "top": "primal:blocks/typestone/scoria_stone_smooth",
       "top_side": "primal:blocks/typestone/scoria_stone_smooth",
-      "bottom_side": "blocks/stone_slab_side",
-      "bottom": "blocks/stone_slab_top",
+      "bottom_side": "primal:blocks/typestone/nether_stone_normal",
+      "bottom": "primal:blocks/typestone/nether_stone_normal",
       "particle": "primal:blocks/typestone/scoria_stone_smooth"
     }
   },
