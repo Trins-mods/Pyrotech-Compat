@@ -1,6 +1,5 @@
 package trinsdar.pyrotech_compat;
 
-import com.codetaylor.mc.pyrotech.ModPyrotech;
 import net.minecraftforge.common.config.Config;
 
 import java.util.Map;
