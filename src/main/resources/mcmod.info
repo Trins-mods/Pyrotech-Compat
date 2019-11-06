@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "pyrotech_compat",
+  "name": "Pyrotech Compat",
+  "description": "Adds andesite and diorite anvils, rocks from ubc rock types, netherrack rocks, and scorai anvil using primal core stone",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Trinsdar"],
+  "credits": "The Forge and FML guys, for making forge, codetaylor for making pyrotech",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

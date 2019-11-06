@@ -3,7 +3,10 @@ package trinsdar.pyrotech_compat;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -75,6 +78,15 @@ public class PyrotechCompat {
     public void onRegisterRecipesEvent(RegistryEvent.Register<IRecipe> event){
         if (Loader.isModLoaded("undergroundbiomes")){
             RecipeInitializer.init();
+        }
+    }
+
+    @SubscribeEvent
+    public void onConfigChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event)
+    {
+        if (event.getModID().equals(MODID))
+        {
+            ConfigManager.sync(MODID, Config.Type.INSTANCE);
         }
     }
 

@@ -1,13 +1,12 @@
 package trinsdar.pyrotech_compat;
 
 import com.codetaylor.mc.pyrotech.ModPyrotech;
-import com.codetaylor.mc.pyrotech.modules.plugin.dropt.ModulePluginDroptConfig;
 import net.minecraftforge.common.config.Config;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-@Config(modid = ModPyrotech.MOD_ID, name = "pyrotech/plugin.Dropt.pyrotechCompat")
+@Config(modid = PyrotechCompat.MODID, name = "pyrotech/plugin.Dropt.pyrotechCompat")
 public class PyrotechPluginDroptConfig {
     public static final Map<String, Boolean> ENABLED_RULES = new TreeMap();
 
